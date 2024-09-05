@@ -1,0 +1,202 @@
+<html layout:decorate="~{layout}">
+
+<head>
+    <title>Desarrollo</title>
+    <link rel="stylesheet" th:href="@{~/grupo-web/styles/navbar.css}">
+    <link rel="stylesheet" th:href="@{~/grupo-web/styles/desarrollo.css}">
+</head>
+
+<body>
+<section layout:fragment="content">
+    <section class="main_content">
+        <div class="hero">
+            <div class="info">
+                <h2>Desarrollo</h2>
+            </div>
+        </div>
+    </section>
+
+    <section id="project-info" class="project-info">
+        <h3>Endpoints para la Autenticación y Autorización</h3>
+        <ul>
+            <li><strong>POST /auth/register</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Registra un nuevo usuario (arrendador o arrendatario).</li>
+                    <li><strong>Request:</strong> Datos del usuario (nombre, correo electrónico, contraseña, rol).</li>
+                    <li><strong>Response:</strong> Confirmación del registro o error.</li>
+                </ul>
+            </li>
+            <li><strong>POST /auth/login</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Autentica al usuario y genera un token JWT.</li>
+                    <li><strong>Request:</strong> Credenciales del usuario (correo electrónico y contraseña).</li>
+                    <li><strong>Response:</strong> Token JWT y detalles del usuario.</li>
+                </ul>
+            </li>
+            <li><strong>GET /auth/me</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Devuelve la información del usuario autenticado.</li>
+                    <li><strong>Request:</strong> Token JWT en los headers.</li>
+                    <li><strong>Response:</strong> Datos del usuario.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Endpoints para la Gestión de Propiedades</h3>
+        <ul>
+            <li><strong>POST /properties</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Crea una nueva propiedad para arrendar.</li>
+                    <li><strong>Request:</strong> Datos de la propiedad (nombre, dirección, descripción, precio, etc.).</li>
+                    <li><strong>Response:</strong> Detalles de la propiedad creada o error.</li>
+                </ul>
+            </li>
+            <li><strong>GET /properties</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Obtiene una lista de todas las propiedades disponibles.</li>
+                    <li><strong>Request:</strong> Opcionalmente, filtros como ubicación, precio, tipo de propiedad, etc.</li>
+                    <li><strong>Response:</strong> Lista de propiedades.</li>
+                </ul>
+            </li>
+            <li><strong>GET /properties/{id}</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Obtiene los detalles de una propiedad específica.</li>
+                    <li><strong>Request:</strong> ID de la propiedad.</li>
+                    <li><strong>Response:</strong> Detalles de la propiedad.</li>
+                </ul>
+            </li>
+            <li><strong>PUT /properties/{id}</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Actualiza los detalles de una propiedad existente.</li>
+                    <li><strong>Request:</strong> Datos actualizados de la propiedad.</li>
+                    <li><strong>Response:</strong> Detalles de la propiedad actualizada o error.</li>
+                </ul>
+            </li>
+            <li><strong>DELETE /properties/{id}</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Elimina una propiedad específica.</li>
+                    <li><strong>Request:</strong> ID de la propiedad.</li>
+                    <li><strong>Response:</strong> Confirmación de eliminación o error.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Endpoints para la Gestión de Arrendamientos</h3>
+        <ul>
+            <li><strong>POST /rentals</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Crea una solicitud de arrendamiento para una propiedad.</li>
+                    <li><strong>Request:</strong> Datos de la solicitud (ID de la propiedad, fechas de arrendamiento, etc.).</li>
+                    <li><strong>Response:</strong> Detalles de la solicitud creada o error.</li>
+                </ul>
+            </li>
+            <li><strong>GET /rentals</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Obtiene una lista de todas las solicitudes de arrendamiento hechas por el usuario autenticado.</li>
+                    <li><strong>Request:</strong> Token JWT en los headers.</li>
+                    <li><strong>Response:</strong> Lista de solicitudes de arrendamiento.</li>
+                </ul>
+            </li>
+            <li><strong>GET /rentals/{id}</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Obtiene los detalles de una solicitud de arrendamiento específica.</li>
+                    <li><strong>Request:</strong> ID de la solicitud.</li>
+                    <li><strong>Response:</strong> Detalles de la solicitud.</li>
+                </ul>
+            </li>
+            <li><strong>PUT /rentals/{id}</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Actualiza el estado de una solicitud de arrendamiento (aceptar o rechazar).</li>
+                    <li><strong>Request:</strong> Nuevo estado de la solicitud.</li>
+                    <li><strong>Response:</strong> Detalles de la solicitud actualizada o error.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Endpoints para la Gestión de Pagos</h3>
+        <ul>
+            <li><strong>POST /payments</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Registra un nuevo pago para una solicitud de arrendamiento aceptada.</li>
+                    <li><strong>Request:</strong> Datos del pago (ID de la solicitud, monto, método de pago, etc.).</li>
+                    <li><strong>Response:</strong> Confirmación del pago o error.</li>
+                </ul>
+            </li>
+            <li><strong>GET /payments</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Obtiene una lista de todos los pagos realizados por el usuario autenticado.</li>
+                    <li><strong>Request:</strong> Token JWT en los headers.</li>
+                    <li><strong>Response:</strong> Lista de pagos.</li>
+                </ul>
+            </li>
+            <li><strong>GET /payments/{id}</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Obtiene los detalles de un pago específico.</li>
+                    <li><strong>Request:</strong> ID del pago.</li>
+                    <li><strong>Response:</strong> Detalles del pago.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Endpoints para la Gestión de Calificaciones y Comentarios</h3>
+        <ul>
+            <li><strong>POST /reviews</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Crea una nueva calificación y comentario para una propiedad o usuario.</li>
+                    <li><strong>Request:</strong> Datos de la calificación (ID de la propiedad o usuario, puntuación, comentario).</li>
+                    <li><strong>Response:</strong> Detalles de la calificación creada o error.</li>
+                </ul>
+            </li>
+            <li><strong>GET /reviews</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Obtiene una lista de todas las calificaciones y comentarios hechos por el usuario autenticado.</li>
+                    <li><strong>Request:</strong> Token JWT en los headers.</li>
+                    <li><strong>Response:</strong> Lista de calificaciones.</li>
+                </ul>
+            </li>
+            <li><strong>GET /reviews/{id}</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Obtiene los detalles de una calificación específica.</li>
+                    <li><strong>Request:</strong> ID de la calificación.</li>
+                    <li><strong>Response:</strong> Detalles de la calificación.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Endpoints para la Gestión de Usuarios</h3>
+        <ul>
+            <li><strong>GET /users</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Obtiene una lista de todos los usuarios (solo para administradores).</li>
+                    <li><strong>Request:</strong> Token JWT en los headers.</li>
+                    <li><strong>Response:</strong> Lista de usuarios.</li>
+                </ul>
+            </li>
+            <li><strong>GET /users/{id}</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Obtiene los detalles de un usuario específico.</li>
+                    <li><strong>Request:</strong> ID del usuario.</li>
+                    <li><strong>Response:</strong> Detalles del usuario.</li>
+                </ul>
+            </li>
+            <li><strong>PUT /users/{id}</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Actualiza los detalles de un usuario (solo para administradores).</li>
+                    <li><strong>Request:</strong> Datos actualizados del usuario.</li>
+                    <li><strong>Response:</strong> Detalles del usuario actualizado o error.</li>
+                </ul>
+            </li>
+            <li><strong>DELETE /users/{id}</strong>
+                <ul>
+                    <li><strong>Descripción:</strong> Elimina un usuario específico (solo para administradores).</li>
+                    <li><strong>Request:</strong> ID del usuario.</li>
+                    <li><strong>Response:</strong> Confirmación de eliminación o error.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+</section>
+</body>
+
+</html>

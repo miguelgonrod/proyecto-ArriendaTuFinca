@@ -1,0 +1,85 @@
+<html layout:decorate="~{layout}">
+
+<head>
+    <title>Pruebas</title>
+    <link rel="stylesheet" th:href="@{~/grupo-web/styles/navbar.css}">
+    <link rel="stylesheet" th:href="@{~/grupo-web/styles/desarrollo.css}">
+</head>
+
+<body>
+<section layout:fragment="content">
+
+    <section class="main_content">
+        <div class="hero">
+            <div class="info">
+                <h2>Pruebas</h2>
+            </div>
+        </div>
+    </section>
+
+    <section id="project-info" class="project-info">
+        <h3>Casos de pruebas frontend</h3>
+        <ul>
+            <li><strong>Pruebas de Interfaz de Usuario (UI)</strong>
+                <ul>
+                    <li><strong>Verificación de la Navegación:</strong> Asegúrate de que todos los enlaces de navegación funcionan correctamente para ambos perfiles de usuario (Arrendatario y Arrendador).</li>
+                    <li><strong>Prueba de Formularios de Propiedad:</strong> Verifica que los formularios para la creación, edición, y eliminación de propiedades por parte del "Usuario Arrendatario" funcionen correctamente.</li>
+                    <li><strong>Prueba de Filtrado de Propiedades:</strong> Asegúrate de que el "Usuario Arrendador" pueda filtrar las propiedades por ubicación geográfica de manera efectiva.</li>
+                    <li><strong>Validación de Campos de Formulario:</strong> Comprueba que todos los campos de los formularios tengan las validaciones adecuadas (ej., campos obligatorios, formato de datos correcto).</li>
+                    <li><strong>Prueba de Respuesta a Solicitudes:</strong> Verifica que el "Usuario Arrendatario" pueda ver y responder a las solicitudes de arrendamiento de manera eficiente.</li>
+                    <li><strong>Prueba de Interfaz de Pago:</strong> Asegúrate de que el proceso de pago por parte del "Usuario Arrendador" funcione correctamente y sea intuitivo.</li>
+                    <li><strong>Prueba de Calificaciones y Comentarios:</strong> Verifica que ambos tipos de usuarios puedan dejar calificaciones y comentarios sobre sus experiencias.</li>
+                </ul>
+            </li>
+            <li><strong>Pruebas de Responsividad</strong>
+                <ul>
+                    <li><strong>Compatibilidad con Móviles:</strong> Asegúrate de que la interfaz sea completamente funcional y estéticamente agradable en dispositivos móviles.</li>
+                    <li><strong>Compatibilidad con Diferentes Navegadores:</strong> Prueba la aplicación en múltiples navegadores (Chrome, Firefox, Safari, Edge) para garantizar la compatibilidad.</li>
+                </ul>
+            </li>
+            <li><strong>Pruebas de Accesibilidad</strong>
+                <ul>
+                    <li><strong>Prueba de Teclado:</strong> Verifica que todas las funcionalidades sean accesibles mediante el teclado.</li>
+                    <li><strong>Prueba de Lectores de Pantalla:</strong> Asegúrate de que la aplicación sea compatible con lectores de pantalla para usuarios con discapacidades visuales.</li>
+                </ul>
+            </li>
+        </ul>
+    
+        <h3>Casos de pruebas backend</h3>
+        <ul>
+            <li><strong>Pruebas de API</strong>
+                <ul>
+                    <li><strong>Creación de Propiedades:</strong> Asegúrate de que la API permite al "Usuario Arrendatario" crear nuevas propiedades correctamente.</li>
+                    <li><strong>Edición de Propiedades:</strong> Verifica que las propiedades se puedan actualizar con los datos correctos.</li>
+                    <li><strong>Eliminación de Propiedades:</strong> Asegúrate de que las propiedades se eliminen correctamente y que se realicen las verificaciones necesarias antes de la eliminación.</li>
+                    <li><strong>Solicitud de Arrendamiento:</strong> Verifica que el "Usuario Arrendador" pueda enviar solicitudes de arrendamiento y que estas se almacenen correctamente en la base de datos.</li>
+                    <li><strong>Gestión de Pagos:</strong> Asegúrate de que el sistema maneje correctamente los pagos realizados por el "Usuario Arrendador" y registre estos pagos en la base de datos.</li>
+                    <li><strong>Calificaciones y Comentarios:</strong> Verifica que ambos tipos de usuarios puedan enviar y recuperar calificaciones y comentarios.</li>
+                </ul>
+            </li>
+            <li><strong>Pruebas de Seguridad</strong>
+                <ul>
+                    <li><strong>Autenticación y Autorización:</strong> Asegúrate de que solo los usuarios autenticados puedan acceder a las funcionalidades específicas de su rol (Arrendatario o Arrendador).</li>
+                    <li><strong>Protección contra SQL Injection:</strong> Realiza pruebas para verificar que las entradas de usuario no puedan explotar vulnerabilidades de SQL Injection.</li>
+                    <li><strong>Prueba de Sesiones y Tokens:</strong> Asegúrate de que las sesiones y tokens de autenticación sean manejados de manera segura y expiren correctamente.</li>
+                </ul>
+            </li>
+            <li><strong>Pruebas de Integración</strong>
+                <ul>
+                    <li><strong>Integración de API de Pago:</strong> Verifica que la integración con cualquier sistema de pago externo funcione correctamente y maneje adecuadamente las respuestas de error y éxito.</li>
+                    <li><strong>Notificaciones y Mensajería:</strong> Asegúrate de que las notificaciones se envíen correctamente cuando se aceptan, rechazan o crean solicitudes de arrendamiento.</li>
+                </ul>
+            </li>
+            <li><strong>Pruebas de Rendimiento</strong>
+                <ul>
+                    <li><strong>Carga del Sistema:</strong> Verifica cómo el sistema maneja múltiples solicitudes de arrendamiento simultáneas.</li>
+                    <li><strong>Pruebas de Escalabilidad:</strong> Asegúrate de que la aplicación puede escalar adecuadamente para manejar un gran número de propiedades y usuarios.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+</section>
+</body>
+
+</html>

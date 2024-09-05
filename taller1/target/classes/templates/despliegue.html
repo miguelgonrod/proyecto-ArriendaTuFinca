@@ -1,0 +1,48 @@
+<html layout:decorate="~{layout}">
+
+<head>
+    <title>Despliegue</title>
+    <link rel="stylesheet" th:href="@{~/grupo-web/styles/navbar.css}">
+    <link rel="stylesheet" th:href="@{~/grupo-web/styles/tableView.css}">
+</head>
+
+<body>
+<section layout:fragment="content">
+    <section class="main_content">
+        <div class="hero">
+            <div class="info">
+                <h2>Despliegue Continuo</h2>
+            </div>
+        </div>
+    </section>
+
+    <section id="project-info" class="project-info">
+        <h3>Versiones</h3>
+        <div class = "table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Version</th>
+                        <th>Descripcíon</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>V0.1</th>
+                        <th>Crear plantillas de html con thymeleaf</th>
+                    </tr>
+                    <tr>
+                        <th>V1.0</th>
+                        <th>Se añadió thymeleaf y springboot para realizar pantallas dinamicas y comunicación con base de datos</th>
+                    </tr>
+                </tbody>
+            </table>
+            
+
+        </div>
+    </section>
+
+</section>
+</body>
+
+</html>

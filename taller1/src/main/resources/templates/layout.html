@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head th:fragment="head">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" th:href="@{~/grupo-web/styles/navbar.css}">
+  <title layout:title-pattern="$CONTENT_TITLE"></title>
+  <link rel="shortcut icon" type="image/png" th:href="@{~/grupo-web/assets/favicon.png}">
+</head>
+
+<body>
+  <div th:replace="~{navbar.html :: navbar}"></div>
+  <section layout:fragment="content"></section>
+</body>
+</html>

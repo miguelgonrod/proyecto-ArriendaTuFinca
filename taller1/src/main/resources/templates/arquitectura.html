@@ -1,0 +1,51 @@
+<html layout:decorate="~{layout}">
+
+<head>
+    <title>Arquitectura</title>
+    <link rel="stylesheet" th:href="@{~/grupo-web/styles/navbar.css}">
+    <link rel="stylesheet" th:href="@{~/grupo-web/styles/arquitectura.css}">
+</head>
+
+<body>
+<section layout:fragment="content">
+    <section class="main_content">
+        <div class="hero">
+            <div class="info">
+                <h2>Arquitectura del proyecto</h2>
+            </div>
+        </div>
+    </section>
+
+    <section id="project-info" class="project-info">
+        <h3>Diagramas</h3>
+
+        <div class="diagram-container">
+            <div class="diagram">
+                <h3>Diagrama de contexto</h3>
+                <img src="../grupo-web/assets/diagramaContexto.png" alt="Diagrama de contexto">
+            </div>
+            <div class="diagram">
+                <h3>Diagrama del contenedor</h3>
+                <img src="../grupo-web/assets/diagramaContenedor.jpeg" alt="Diagrama del contenedor">
+            </div>
+            <div class="diagram">
+                <h3>Diagrama de componentes</h3>
+                <img src="../grupo-web/assets/diagramaComponentes.png" alt="Diagrama de componentes">
+            </div>
+        </div>
+
+        <div class="model-container">
+            <h3>Modelos</h3>
+            <img src="../grupo-web/assets/entidadRelacion.png" alt="Entidad/Relación: Diccionario">
+        </div>
+
+        <div class="deployment-container">
+            <h3>Diagrama de despliegue</h3>
+            <img src="../grupo-web/assets/diagramaDespliegue.png" alt="Diagrama de despliegue">
+        </div>
+    </section>
+
+</section>
+</body>
+
+</html>

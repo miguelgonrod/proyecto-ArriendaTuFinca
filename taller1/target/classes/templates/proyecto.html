@@ -1,0 +1,38 @@
+<html layout:decorate="~{layout}">
+
+<head>
+    <title>Proyecto</title>
+    <link rel="stylesheet" th:href="@{~/grupo-web/styles/navbar.css}">
+    <link rel="stylesheet" th:href="@{~/grupo-web/styles/proyecto.css}">
+</head>
+
+<body>
+<section layout:fragment="content">
+
+    <section class="main_content">
+        <div class="hero">
+            <div class="info">
+                <h2>Proyecto a desarrollar</h2>
+            </div>
+        </div>
+    </section>
+
+    <section id="project-info" class="project-info">
+        <p>La aplicación contará con dos perfiles principales: Usuario Arrendatario y Usuario Arrendador.
+
+            Usuario Arrendatario: Podrá crear, editar, eliminar y actualizar propiedades para arrendar, responder solicitudes de arrendamiento, aceptar o cancelar solicitudes, verificar pagos de arrendadores, y proporcionar calificaciones y comentarios.
+            
+            Usuario Arrendador: Podrá buscar propiedades para arrendar filtradas por ubicación, solicitar el arrendamiento de propiedades, realizar pagos y calificar tanto la finca arrendada como al arrendatario.
+            
+            Se integrará un sistema de autenticación y autorización para gestionar roles y permisos, y se desarrollarán interfaces de usuario intuitivas para una interacción eficiente. La planificación detallada y un enfoque centrado en el usuario son esenciales para el éxito de la plataforma.</p>
+        
+        <div class="project-images">
+            <img src="../grupo-web/assets/projectImage1.png" alt="Imagen del proyecto 1">
+            <img src="../grupo-web/assets/projectImage2.png" alt="Imagen del proyecto 2">
+        </div>
+    </section>
+
+</section>
+</body>
+
+</html>

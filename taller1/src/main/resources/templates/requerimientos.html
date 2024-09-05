@@ -1,0 +1,205 @@
+<html layout:decorate="~{layout}">
+
+<head>
+    <title>Requerimientos</title>
+    <link rel="stylesheet" th:href="@{~/grupo-web/styles/navbar.css}">
+    <link rel="stylesheet" th:href="@{~/grupo-web/styles/tableView.css}">
+</head>
+
+<body>
+<section layout:fragment="content">
+
+    <section class="main_content">
+        <div class="hero">
+            <div class="info">
+                <h2>Requerimientos del proyecto</h2>
+            </div>
+        </div>
+    </section>
+
+    <section id="project-info" class="project-info">
+        <h3>Requerimientos funcionales</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Caso</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>HUA 1</td>
+                        <td>Creación de cuenta</td>
+                        <td>Crear una cuenta de usuario para manejar las propiedades.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 2</td>
+                        <td>Activación de cuenta</td>
+                        <td>Verificar la autenticidad de la cuenta para acceder a las herramientas necesarias.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 3</td>
+                        <td>Autenticación de Usuario</td>
+                        <td>Autenticar el perfil de usuario para ingresar al sistema.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 4</td>
+                        <td>Ver mis propiedades</td>
+                        <td>Ver las propiedades gestionadas por el arrendador.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 5</td>
+                        <td>Crear propiedad</td>
+                        <td>Añadir una nueva propiedad para arrendar.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 6</td>
+                        <td>Editar propiedad</td>
+                        <td>Modificar la información de una propiedad.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 7</td>
+                        <td>Subir fotos de la propiedad</td>
+                        <td>Añadir fotografías de las propiedades para mostrar mejor sus características.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 8</td>
+                        <td>Desactivar propiedad</td>
+                        <td>Desactivar temporalmente el arrendamiento de una propiedad.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 9</td>
+                        <td>Ver solicitudes de arriendo</td>
+                        <td>Revisar las solicitudes de propiedades para aceptarlas o rechazarlas.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 10</td>
+                        <td>Aceptar solicitud de arriendo</td>
+                        <td>Confirmar la solicitud de arrendamiento de una propiedad.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 11</td>
+                        <td>Cancelar solicitud de arriendo</td>
+                        <td>Cancelar la solicitud de arrendamiento de una propiedad.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 12</td>
+                        <td>Calificar arrendatario</td>
+                        <td>Calificar al arrendatario después de finalizada la arrendación.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 13</td>
+                        <td>Creación de cuenta</td>
+                        <td>Crear una cuenta para poder manejar solicitudes de arrendamiento.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 14</td>
+                        <td>Activación de cuenta</td>
+                        <td>Verificar la autenticidad de la cuenta para poder acceder a las herramientas del sistema.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 15</td>
+                        <td>Autenticación de Usuario</td>
+                        <td>Autenticar el perfil de usuario para ingresar al sistema.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 16</td>
+                        <td>Buscar propiedades</td>
+                        <td>Ubicar propiedades dependiendo del municipio deseado para la estadía.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 17</td>
+                        <td>Solicitar arrendado</td>
+                        <td>Enviar una solicitud para confirmar la posibilidad de arrendamiento en una fecha específica.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 18</td>
+                        <td>Ver solicitudes enviadas</td>
+                        <td>Revisar las solicitudes enviadas hasta el momento.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 19</td>
+                        <td>Pagar arrendado</td>
+                        <td>Una vez confirmado el arrendado, pagar el valor respectivo al arrendador.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 20</td>
+                        <td>Calificar finca</td>
+                        <td>Calificar las comodidades de la finca después de la estadía.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 22</td>
+                        <td>Calificar arrendador</td>
+                        <td>Calificar el comportamiento del arrendador después de la estadía.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 21</td>
+                        <td>Sistema de mensajería</td>
+                        <td>Implementar un sistema de mensajería entre arrendador y arrendatario para facilitar la comunicación.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 23</td>
+                        <td>Historial de actividades</td>
+                        <td>Mostrar un historial de actividades y transacciones realizadas.</td>
+                    </tr>
+                    <tr>
+                        <td>HUA 24</td>
+                        <td>Notificaciones</td>
+                        <td>Enviar notificaciones a los usuarios sobre nuevas solicitudes, pagos pendientes y otros eventos relevantes.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Requerimientos no funcionales</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Caso</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AC 1</td>
+                        <td>Disponibilidad</td>
+                        <td>El sistema debe estar disponible 6 días a la semana, 18 horas al día, con un rango de cumplimiento del 90%.</td>
+                    </tr>
+                    <tr>
+                        <td>AC 2</td>
+                        <td>Seguridad</td>
+                        <td>Garantizar la privacidad de los datos personales de los usuarios y la seguridad de las transacciones.</td>
+                    </tr>
+                    <tr>
+                        <td>AC 3</td>
+                        <td>Rendimiento</td>
+                        <td>El sistema debe procesar las solicitudes en un máximo de 3 segundos para hasta 100 usuarios concurrentes.</td>
+                    </tr>
+                    <tr>
+                        <td>AC 4</td>
+                        <td>Usabilidad</td>
+                        <td>La interfaz debe ser accesible y operable desde los navegadores Google Chrome y Firefox.</td>
+                    </tr>
+                    <tr>
+                        <td>AC 5</td>
+                        <td>Escalabilidad</td>
+                        <td>El sistema debe ser capaz de gestionar un incremento en el número de usuarios y propiedades sin pérdida de rendimiento.</td>
+                    </tr>
+                    <tr>
+                        <td>AC 6</td>
+                        <td>Compatibilidad</td>
+                        <td>La plataforma debe ser compatible también con dispositivos móviles, además de navegadores de escritorio.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</section>
+</body>
+
+</html>
