@@ -8,5 +8,5 @@ import com.web.taller1.entities.SolicitudArrendamiento;
 
 @Repository
 public interface SolicitudArrendamientoRepository extends JpaRepository<SolicitudArrendamiento, Long> {
-    List<SolicitudArrendamiento> findByArrendadorId(Long arrendadorId);
+    public List<SolicitudArrendamiento> findByArrendador_Id(Long arrendadorId);
 }

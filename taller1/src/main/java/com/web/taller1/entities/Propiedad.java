@@ -5,11 +5,20 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import lombok.Getter;
+import lombok.Setter;
 import jakarta.persistence.JoinColumn;
 
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+
 @Entity
 public class Propiedad {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,14 +26,17 @@ public class Propiedad {
     private String direccion;
     private String descripcion;
     private Double precio;
+    private String municipio;
+    private Integer numeroPersonas;
+    private String estado;
 
+    // Relación con Usuario (propietario de la propiedad)
     @ManyToOne
-    @JoinColumn(name = "arrendatario_id")
-    private UsuarioArrendatario arrendatario;
+    private Usuario usuario;
 
-    // Getters y setters
+    // Getters y Setters
 
-     public Long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -56,11 +68,35 @@ public class Propiedad {
         this.precio = precio;
     }
 
-    public UsuarioArrendatario getArrendatario() {
-        return arrendatario;
+    public String getMunicipio() {
+        return municipio;
     }
 
-    public void setArrendatario(UsuarioArrendatario arrendatario) {
-        this.arrendatario = arrendatario;
+    public void setMunicipio(String municipio) {
+        this.municipio = municipio;
+    }
+
+    public Integer getNumeroPersonas() {
+        return numeroPersonas;
+    }
+
+    public void setNumeroPersonas(Integer numeroPersonas) {
+        this.numeroPersonas = numeroPersonas;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

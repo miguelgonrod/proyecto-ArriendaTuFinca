@@ -5,9 +5,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 import com.web.taller1.repositories.PropiedadRepository;
-import com.web.taller1.repositories.UsuarioArrendatarioRepository;
+import com.web.taller1.repositories.UsuarioRepository;
 import com.web.taller1.entities.Propiedad;
-import com.web.taller1.entities.UsuarioArrendatario;
+import com.web.taller1.entities.Usuario;
 import com.web.taller1.DTO.PropiedadDTO;
 
 
@@ -18,94 +18,84 @@ public class PropiedadService {
     private PropiedadRepository propiedadRepository;
 
     @Autowired
-    private UsuarioArrendatarioRepository usuarioArrendatarioRepository;
+    private UsuarioRepository usuarioRepository;
 
-    // Obtener propiedades por arrendatario
-    public List<PropiedadDTO> getPropiedadesByArrendatario(Long arrendatarioId) {
-        List<Propiedad> propiedades = propiedadRepository.findByArrendatarioId(arrendatarioId);
-        return propiedades.stream()
-            .map(this::convertToDTO)
-            .collect(Collectors.toList());
-    }
-
-    // Crear una nueva propiedad
     public PropiedadDTO createPropiedad(PropiedadDTO propiedadDTO) {
-        // Buscar el arrendatario por su ID
-        UsuarioArrendatario arrendatario = usuarioArrendatarioRepository.findById(propiedadDTO.getArrendatarioId())
-                .orElseThrow(() -> new RuntimeException("Arrendatario no encontrado con id: " + propiedadDTO.getArrendatarioId()));
-
-        // Crear la entidad Propiedad y asignar el arrendatario
+        // Crear una nueva instancia de Propiedad
         Propiedad propiedad = new Propiedad();
+        
+        // Asignar los valores desde el DTO a la entidad Propiedad
         propiedad.setDireccion(propiedadDTO.getDireccion());
         propiedad.setDescripcion(propiedadDTO.getDescripcion());
         propiedad.setPrecio(propiedadDTO.getPrecio());
-        propiedad.setArrendatario(arrendatario);  // Asignar el arrendatario a la propiedad
-
+        
+        // Asignar el usuario si está presente
+        if (propiedadDTO.getUsuarioId() != null) {
+            Usuario usuario = usuarioRepository.findById(propiedadDTO.getUsuarioId())
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado con id: " + propiedadDTO.getUsuarioId()));
+            propiedad.setUsuario(usuario);
+        } else {
+            throw new RuntimeException("El ID del usuario no puede ser nulo");
+        }
+        
+        // Asignar valores adicionales
+        propiedad.setMunicipio(propiedadDTO.getMunicipio());
+        propiedad.setNumeroPersonas(propiedadDTO.getNumeroPersonas());
+        propiedad.setEstado(propiedadDTO.getEstado());
+        
         // Guardar la nueva propiedad en la base de datos
         Propiedad nuevaPropiedad = propiedadRepository.save(propiedad);
-
-        // Convertir la entidad guardada a DTO y devolverla
+    
+        // Convertir la entidad guardada en un DTO para la respuesta
         return convertToDTO(nuevaPropiedad);
     }
 
-    // Obtener propiedad por ID
+    public List<PropiedadDTO> getAllPropiedades() {
+        List<Propiedad> propiedades = propiedadRepository.findAll();
+        return propiedades.stream().map(PropiedadDTO::new).collect(Collectors.toList());
+    }
+
     public PropiedadDTO getPropiedadById(Long id) {
         Propiedad propiedad = propiedadRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Propiedad no encontrada con id: " + id));
-        return convertToDTO(propiedad);
+        return new PropiedadDTO(propiedad);
     }
 
-    // Actualizar propiedad
     public PropiedadDTO updatePropiedad(Long id, PropiedadDTO propiedadDTO) {
         Propiedad propiedad = propiedadRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Propiedad no encontrada con id: " + id));
-
-        // Actualiza los campos de la propiedad
         propiedad.setDireccion(propiedadDTO.getDireccion());
         propiedad.setDescripcion(propiedadDTO.getDescripcion());
         propiedad.setPrecio(propiedadDTO.getPrecio());
-
-        // Actualiza el arrendatario si es necesario
-        if (propiedadDTO.getArrendatarioId() != null) {
-            UsuarioArrendatario arrendatario = new UsuarioArrendatario(); // Busca el arrendatario en tu DB si es necesario
-            arrendatario.setId(propiedadDTO.getArrendatarioId());
-            propiedad.setArrendatario(arrendatario);
-        }
-
-        // Guardar los cambios en la base de datos
+        propiedad.setMunicipio(propiedadDTO.getMunicipio());
+        propiedad.setNumeroPersonas(propiedadDTO.getNumeroPersonas());
         Propiedad propiedadActualizada = propiedadRepository.save(propiedad);
-        return convertToDTO(propiedadActualizada);
+        return new PropiedadDTO(propiedadActualizada);
     }
 
-    // Eliminar propiedad
     public void deletePropiedad(Long id) {
         Propiedad propiedad = propiedadRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Propiedad no encontrada con id: " + id));
-
-        // Eliminar la propiedad de la base de datos
         propiedadRepository.delete(propiedad);
     }
 
-    // Convertir entidad a DTO
     private PropiedadDTO convertToDTO(Propiedad propiedad) {
         PropiedadDTO dto = new PropiedadDTO();
         dto.setId(propiedad.getId());
-        dto.setDireccion(propiedad.getDireccion());
-        dto.setDescripcion(propiedad.getDescripcion());
-        dto.setPrecio(propiedad.getPrecio());
-        dto.setArrendatarioId(propiedad.getArrendatario().getId());
+        dto.setDireccion(propiedad.getDireccion() != null ? propiedad.getDireccion() : "Desconocido");
+        dto.setDescripcion(propiedad.getDescripcion() != null ? propiedad.getDescripcion() : "Sin descripción");
+        dto.setPrecio(propiedad.getPrecio() != null ? propiedad.getPrecio() : 0.0);
+    
+        // Asegurarse de que el campo usuario no sea nulo antes de acceder a él
+        if (propiedad.getUsuario() != null) {
+            dto.setUsuarioId(propiedad.getUsuario().getId());
+        }
+    
+        // Asignar valores no nulos para los campos adicionales
+        dto.setMunicipio(propiedad.getMunicipio() != null ? propiedad.getMunicipio() : "Sin municipio");
+        dto.setNumeroPersonas(propiedad.getNumeroPersonas() != null ? propiedad.getNumeroPersonas() : 0);
+        dto.setEstado(propiedad.getEstado() != null ? propiedad.getEstado() : "Desconocido");
+    
         return dto;
     }
-
-    // Convertir DTO a entidad
-    private Propiedad convertToEntity(PropiedadDTO dto) {
-        Propiedad propiedad = new Propiedad();
-        propiedad.setDireccion(dto.getDireccion());
-        propiedad.setDescripcion(dto.getDescripcion());
-        propiedad.setPrecio(dto.getPrecio());
-        // Aquí también deberás buscar el `UsuarioArrendatario` por su ID si es necesario
-        return propiedad;
-    }
-    
-    
 }

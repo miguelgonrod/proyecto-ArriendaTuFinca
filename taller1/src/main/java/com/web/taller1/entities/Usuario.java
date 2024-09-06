@@ -6,13 +6,19 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-import jakarta.persistence.OneToMany;
-import java.util.List;
+import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Usuario {
+public class Usuario {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,8 +26,9 @@ public abstract class Usuario {
     private String nombre;
     private String email;
     private String password;
-    
-    // Getters y setters
+    private String telefono;
+
+    // Getters y Setters
 
     public Long getId() {
         return id;
@@ -53,5 +60,13 @@ public abstract class Usuario {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 }

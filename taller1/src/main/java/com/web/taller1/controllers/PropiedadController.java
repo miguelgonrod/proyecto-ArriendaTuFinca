@@ -24,27 +24,26 @@ public class PropiedadController {
     @Autowired
     private PropiedadService propiedadService;
 
-    @GetMapping("/arrendatario/{arrendatarioId}")
-    public List<PropiedadDTO> getPropiedadesByArrendatario(@PathVariable Long arrendatarioId) {
-        return propiedadService.getPropiedadesByArrendatario(arrendatarioId);
-    }
-
-    // Otros endpoints para crear, actualizar, eliminar...
     @PostMapping
     public ResponseEntity<PropiedadDTO> createPropiedad(@RequestBody PropiedadDTO propiedadDTO) {
         PropiedadDTO nuevaPropiedad = propiedadService.createPropiedad(propiedadDTO);
         return new ResponseEntity<>(nuevaPropiedad, HttpStatus.CREATED);
     }
 
+    @GetMapping
+    public ResponseEntity<List<PropiedadDTO>> getAllPropiedades() {
+        List<PropiedadDTO> propiedades = propiedadService.getAllPropiedades();
+        return new ResponseEntity<>(propiedades, HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<PropiedadDTO> getPropiedadById(@PathVariable Long id) {
-        PropiedadDTO propiedadDTO = propiedadService.getPropiedadById(id);
-        return new ResponseEntity<>(propiedadDTO, HttpStatus.OK);
+        PropiedadDTO propiedad = propiedadService.getPropiedadById(id);
+        return new ResponseEntity<>(propiedad, HttpStatus.OK);
     }
-    
+
     @PutMapping("/{id}")
-    public ResponseEntity<PropiedadDTO> updatePropiedad(
-            @PathVariable Long id, @RequestBody PropiedadDTO propiedadDTO) {
+    public ResponseEntity<PropiedadDTO> updatePropiedad(@PathVariable Long id, @RequestBody PropiedadDTO propiedadDTO) {
         PropiedadDTO propiedadActualizada = propiedadService.updatePropiedad(id, propiedadDTO);
         return new ResponseEntity<>(propiedadActualizada, HttpStatus.OK);
     }
@@ -52,6 +51,6 @@ public class PropiedadController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePropiedad(@PathVariable Long id) {
         propiedadService.deletePropiedad(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT); // 204 No Content si se elimina correctamente
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

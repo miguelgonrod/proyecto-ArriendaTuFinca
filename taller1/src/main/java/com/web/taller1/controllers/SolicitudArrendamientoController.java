@@ -44,6 +44,7 @@ public class SolicitudArrendamientoController {
         SolicitudArrendamientoDTO solicitud = solicitudService.getSolicitudById(id);
         return new ResponseEntity<>(solicitud, HttpStatus.OK);
     }
+    
 
     // Actualizar una solicitud
     @PutMapping("/{id}")
@@ -52,6 +53,7 @@ public class SolicitudArrendamientoController {
         SolicitudArrendamientoDTO solicitudActualizada = solicitudService.updateSolicitud(id, solicitudDTO);
         return new ResponseEntity<>(solicitudActualizada, HttpStatus.OK);
     }
+    
 
     // Eliminar una solicitud
     @DeleteMapping("/{id}")
@@ -60,3 +62,4 @@ public class SolicitudArrendamientoController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
+

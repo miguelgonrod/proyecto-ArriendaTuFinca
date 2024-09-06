@@ -2,38 +2,24 @@ package com.web.taller1.DTO;
 
 import java.util.Date;
 
+import com.web.taller1.entities.SolicitudArrendamiento;
+
 public class SolicitudArrendamientoDTO {
-
     private Long id;
-    private Long arrendadorId;
-    private Long propiedadId;
     private String estado;
-    private Date fechaSolicitud;
+    private String fechaSolicitud;  // Cambiamos de Date a String
+    private String fechaEntrada;    // Cambiamos de Date a String
+    private String fechaSalida;     // Cambiamos de Date a String
+    private Long usuarioId;
+    private Long propiedadId;
 
-    // Getters y setters
-
+    // Getters y Setters
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getArrendadorId() {
-        return arrendadorId;
-    }
-
-    public void setArrendadorId(Long arrendadorId) {
-        this.arrendadorId = arrendadorId;
-    }
-
-    public Long getPropiedadId() {
-        return propiedadId;
-    }
-
-    public void setPropiedadId(Long propiedadId) {
-        this.propiedadId = propiedadId;
     }
 
     public String getEstado() {
@@ -44,11 +30,45 @@ public class SolicitudArrendamientoDTO {
         this.estado = estado;
     }
 
-    public Date getFechaSolicitud() {
+    public String getFechaSolicitud() {
         return fechaSolicitud;
     }
 
-    public void setFechaSolicitud(Date fechaSolicitud) {
+    public void setFechaSolicitud(String fechaSolicitud) {
         this.fechaSolicitud = fechaSolicitud;
     }
+
+    public String getFechaEntrada() {
+        return fechaEntrada;
+    }
+
+    public void setFechaEntrada(String fechaEntrada) {
+        this.fechaEntrada = fechaEntrada;
+    }
+
+    public String getFechaSalida() {
+        return fechaSalida;
+    }
+
+    public void setFechaSalida(String fechaSalida) {
+        this.fechaSalida = fechaSalida;
+    }
+
+    public Long getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(Long usuarioId) {
+        this.usuarioId = usuarioId;
+    }
+
+    public Long getPropiedadId() {
+        return propiedadId;
+    }
+
+    public void setPropiedadId(Long propiedadId) {
+        this.propiedadId = propiedadId;
+    }
+
+    // Otros getters y setters
 }

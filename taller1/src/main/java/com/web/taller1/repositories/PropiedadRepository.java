@@ -7,5 +7,5 @@ import com.web.taller1.entities.Propiedad;
 
 @Repository
 public interface PropiedadRepository extends JpaRepository<Propiedad, Long> {
-    List<Propiedad> findByArrendatarioId(Long arrendatarioId);
+    List<Propiedad> findByUsuarioId(Long usuarioId);  // Reemplaza arrendatarioId por usuarioId
 }
