@@ -26,7 +26,7 @@
         <tbody>
           <tr *ngFor="let propiedad of propiedades">
             <td>{{ propiedad.id }}</td>
-            <td>{{ propiedad.nombre }}</td>
+            <td>{{ propiedad.descripcion }}</td>  <!-- Asumimos que 'descripcion' es el nombre -->
             <td>{{ propiedad.direccion }}</td>
             <td>
               <button class="btn-edit">Editar</button>

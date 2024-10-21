@@ -26,8 +26,8 @@
         <tbody>
           <tr *ngFor="let solicitud of solicitudes">
             <td>{{ solicitud.id }}</td>
-            <td>{{ solicitud.solicitante }}</td>
-            <td>{{ solicitud.fecha | date }}</td>
+            <td>{{ solicitud.usuarioId }}</td>  <!-- Asumimos que usuarioId representa al solicitante -->
+            <td>{{ solicitud.fechaSolicitud | date }}</td>
             <td>
               <button class="btn-edit">Editar</button>
               <button class="btn-delete">Eliminar</button>
