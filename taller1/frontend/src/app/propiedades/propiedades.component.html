@@ -1,40 +1,58 @@
 <div class="container mt-5 pt-5">
-    <h1>Propiedades</h1>
-  
-    <form class="form-card">
-      <div class="form-group">
-        <label for="nombre">Nombre de la propiedad</label>
-        <input type="text" id="nombre" class="form-control" placeholder="Nombre">
-      </div>
-      <div class="form-group">
-        <label for="direccion">Dirección</label>
-        <input type="text" id="direccion" class="form-control" placeholder="Dirección">
-      </div>
-      <button type="submit" class="btn">Agregar Propiedad</button>
-    </form>
-  
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Dirección</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let propiedad of propiedades">
-            <td>{{ propiedad.id }}</td>
-            <td>{{ propiedad.descripcion }}</td>  <!-- Asumimos que 'descripcion' es el nombre -->
-            <td>{{ propiedad.direccion }}</td>
-            <td>
-              <button class="btn-edit">Editar</button>
-              <button class="btn-delete">Eliminar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <h1>Propiedades</h1>
+
+  <form class="form-card" (ngSubmit)="crearPropiedad()">
+    <div class="form-group">
+      <label for="descripcion">Nombre de la propiedad</label>
+      <input type="text" id="descripcion" class="form-control" [(ngModel)]="nuevaPropiedad.descripcion" name="descripcion" placeholder="Nombre">
     </div>
+    <div class="form-group">
+      <label for="direccion">Dirección</label>
+      <input type="text" id="direccion" class="form-control" [(ngModel)]="nuevaPropiedad.direccion" name="direccion" placeholder="Dirección">
+    </div>
+    <div class="form-group">
+      <label for="precio">Precio</label>
+      <input type="number" id="precio" class="form-control" [(ngModel)]="nuevaPropiedad.precio" name="precio" placeholder="Precio">
+    </div>
+    <div class="form-group">
+      <label for="municipio">Municipio</label>
+      <input type="text" id="municipio" class="form-control" [(ngModel)]="nuevaPropiedad.municipio" name="municipio" placeholder="Municipio">
+    </div>
+    <div class="form-group">
+      <label for="numeroPersonas">Número de Personas</label>
+      <input type="number" id="numeroPersonas" class="form-control" [(ngModel)]="nuevaPropiedad.numeroPersonas" name="numeroPersonas" placeholder="Número de Personas">
+    </div>
+    <div class="form-group">
+      <label for="estado">Estado</label>
+      <input type="text" id="estado" class="form-control" [(ngModel)]="nuevaPropiedad.estado" name="estado" placeholder="Estado">
+    </div>
+    <div class="form-group">
+      <label for="usuarioId">ID del Usuario</label>
+      <input type="number" id="usuarioId" class="form-control" [(ngModel)]="nuevaPropiedad.usuarioId" name="usuarioId" placeholder="ID del Usuario">
+    </div>
+    <button type="submit" class="btn">Agregar Propiedad</button>
+  </form>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Dirección</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let propiedad of propiedades">
+          <td>{{ propiedad.id }}</td>
+          <td>{{ propiedad.descripcion }}</td>  <!-- Asumimos que 'descripcion' es el nombre -->
+          <td>{{ propiedad.direccion }}</td>
+          <td>
+            <button class="btn-delete" (click)="eliminarPropiedad(propiedad.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  
+</div>

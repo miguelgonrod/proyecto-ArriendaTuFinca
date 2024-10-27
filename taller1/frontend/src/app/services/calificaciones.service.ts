@@ -14,19 +14,50 @@ export class CalificacionService {
 
   // Obtener todas las calificaciones
   getCalificaciones(): Observable<CalificacionDTO[]> {
-    const dummyCalificaciones: CalificacionDTO[] = [
-      { id: 1, puntuacion: 8, comentario: 'Buen servicio', usuarioId: 1, propiedadId: 1 },
-      { id: 2, puntuacion: 5, comentario: 'Podría mejorar', usuarioId: 2, propiedadId: 2 },
-      { id: 3, puntuacion: 10, comentario: 'Excelente', usuarioId: 3, propiedadId: 3 },
-    ];
-
     return this.http.get<CalificacionDTO[]>(this.apiUrl).pipe(
       catchError((error: HttpErrorResponse) => {
         console.error('Error al obtener calificaciones del backend, usando datos dummy:', error);
-        if (error.status === 200 && error.error instanceof ErrorEvent) {
-          console.error('Error de parsing:', error.error.message);
-        }
-        return of(dummyCalificaciones);  // Emitimos datos dummy en caso de error
+        return of([]);  // Devolvemos una lista vacía en caso de error
+      })
+    );
+  }
+
+  // Crear una nueva calificación
+  createCalificacion(calificacion: CalificacionDTO): Observable<CalificacionDTO> {
+    return this.http.post<CalificacionDTO>(this.apiUrl, calificacion).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error al crear calificación:', error);
+        return of(calificacion);  // Devolvemos la calificación en caso de error
+      })
+    );
+  }
+
+  // Obtener una calificación por ID
+  getCalificacionById(id: number): Observable<CalificacionDTO | null> {
+    return this.http.get<CalificacionDTO>(`${this.apiUrl}/${id}`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error al obtener calificación por ID:', error);
+        return of(null);  // Devolvemos null en caso de error
+      })
+    );
+  }
+
+  // Actualizar una calificación
+  updateCalificacion(id: number, calificacion: CalificacionDTO): Observable<CalificacionDTO> {
+    return this.http.put<CalificacionDTO>(`${this.apiUrl}/${id}`, calificacion).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error al actualizar calificación:', error);
+        return of(calificacion);  // Devolvemos la calificación en caso de error
+      })
+    );
+  }
+
+  // Eliminar una calificación
+  deleteCalificacion(id: number): Observable<void | null> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error al eliminar calificación:', error);
+        return of(null);  // Devolvemos null en caso de error
       })
     );
   }

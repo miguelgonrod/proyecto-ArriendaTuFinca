@@ -8,24 +8,56 @@ import { SolicitudDTO } from '../models/solicitud.model';  // Modelo del DTO
   providedIn: 'root',
 })
 export class SolicitudService {
-  private apiUrl = 'http://localhost:8080/api/solicitudes';  // URL del backend (puedes cambiarla)
+  private apiUrl = 'http://localhost:8080/api/solicitudes';  // URL del backend
 
   constructor(private http: HttpClient) {}
 
   // Obtener todas las solicitudes
   getSolicitudes(): Observable<SolicitudDTO[]> {
-    // Datos dummy para pruebas si el backend no está disponible
-    const dummySolicitudes: SolicitudDTO[] = [
-      { id: 1, estado: 'Pendiente', fechaSolicitud: '2024-01-10', fechaEntrada: '2024-02-01', fechaSalida: '2024-02-10', usuarioId: 1, propiedadId: 1 },
-      { id: 2, estado: 'Aprobada', fechaSolicitud: '2024-01-12', fechaEntrada: '2024-03-01', fechaSalida: '2024-03-10', usuarioId: 2, propiedadId: 2 },
-      { id: 3, estado: 'Rechazada', fechaSolicitud: '2024-01-15', fechaEntrada: '2024-04-01', fechaSalida: '2024-04-10', usuarioId: 3, propiedadId: 3 },
-    ];
-
-    // Aquí hacemos la llamada al backend, pero usamos datos dummy si falla
     return this.http.get<SolicitudDTO[]>(this.apiUrl).pipe(
       catchError((error: HttpErrorResponse) => {
         console.error('Error al obtener solicitudes del backend, usando datos dummy:', error);
-        return of(dummySolicitudes);  // Devolvemos los datos dummy en caso de error
+        return of([]);  // Devolvemos una lista vacía en caso de error
+      })
+    );
+  }
+
+  // Crear una nueva solicitud
+  createSolicitud(solicitud: SolicitudDTO): Observable<SolicitudDTO> {
+    return this.http.post<SolicitudDTO>(this.apiUrl, solicitud).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error al crear solicitud:', error);
+        return of(solicitud);  // Devolvemos la solicitud en caso de error
+      })
+    );
+  }
+
+  // Obtener una solicitud por ID
+  getSolicitudById(id: number): Observable<SolicitudDTO | null> {
+    return this.http.get<SolicitudDTO>(`${this.apiUrl}/${id}`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error al obtener solicitud por ID:', error);
+        return of(null);  // Devolvemos null en caso de error
+      })
+    );
+  }
+
+  // Actualizar una solicitud
+  updateSolicitud(id: number, solicitud: SolicitudDTO): Observable<SolicitudDTO> {
+    return this.http.put<SolicitudDTO>(`${this.apiUrl}/${id}`, solicitud).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error al actualizar solicitud:', error);
+        return of(solicitud);  // Devolvemos la solicitud en caso de error
+      })
+    );
+  }
+
+  // Eliminar una solicitud
+  deleteSolicitud(id: number): Observable<void | null> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error al eliminar solicitud:', error);
+        return of(null);  // Devolvemos null en caso de error
       })
     );
   }

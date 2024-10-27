@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';  // Importamos HttpClient
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';  // Importamos HttpClient
 import { Observable, of } from 'rxjs';  // Usamos 'of' para emitir datos simulados
 import { catchError } from 'rxjs/operators';  // Importamos catchError para manejar errores
 import { PagoDTO } from '../models/pago.model';  // Modelo de PagoDTO
@@ -8,21 +8,56 @@ import { PagoDTO } from '../models/pago.model';  // Modelo de PagoDTO
   providedIn: 'root'  // Servicio disponible globalmente
 })
 export class PagoService {
-  private apiUrl = 'http://localhost:8080/api/pagos';  // URL del backend (dummy aquí)
+  private apiUrl = 'http://localhost:8080/api/pagos';  // URL del backend
 
   constructor(private http: HttpClient) {}  // Inyectamos HttpClient
 
-  // Método que usa dummy data si no tienes backend aún
+  // Obtener todos los pagos
   getPagos(): Observable<PagoDTO[]> {
-    const dummyPagos: PagoDTO[] = [
-      new PagoDTO(1, 150.0, new Date('2023-10-05'), 1, 1),
-      new PagoDTO(2, 200.0, new Date('2023-10-06'), 2, 2),
-    ];
-
     return this.http.get<PagoDTO[]>(this.apiUrl).pipe(
-      catchError(error => {
+      catchError((error: HttpErrorResponse) => {
         console.error('Error al obtener pagos del backend, usando datos dummy:', error);
-        return of(dummyPagos);  // Emitimos datos dummy en caso de error
+        return of([]);  // Devolvemos una lista vacía en caso de error
+      })
+    );
+  }
+
+  // Crear un nuevo pago
+  createPago(pago: PagoDTO): Observable<PagoDTO> {
+    return this.http.post<PagoDTO>(this.apiUrl, pago).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error al crear pago:', error);
+        return of(pago);  // Devolvemos el pago en caso de error
+      })
+    );
+  }
+
+  // Obtener un pago por ID
+  getPagoById(id: number): Observable<PagoDTO | null> {
+    return this.http.get<PagoDTO>(`${this.apiUrl}/${id}`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error al obtener pago por ID:', error);
+        return of(null);  // Devolvemos null en caso de error
+      })
+    );
+  }
+
+  // Actualizar un pago
+  updatePago(id: number, pago: PagoDTO): Observable<PagoDTO> {
+    return this.http.put<PagoDTO>(`${this.apiUrl}/${id}`, pago).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error al actualizar pago:', error);
+        return of(pago);  // Devolvemos el pago en caso de error
+      })
+    );
+  }
+
+  // Eliminar un pago
+  deletePago(id: number): Observable<void | null> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error al eliminar pago:', error);
+        return of(null);  // Devolvemos null en caso de error
       })
     );
   }
