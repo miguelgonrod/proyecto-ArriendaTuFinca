@@ -14,12 +14,12 @@ com/web/taller1/repositories/UsuarioRepository.class
 com/web/taller1/services/SolicitudArrendamientoService.class
 com/web/taller1/entities/Usuario.class
 com/web/taller1/controllers/SolicitudArrendamientoController.class
-com/web/taller1/repositories/PropiedadRepository.class
 com/web/taller1/AppConfiguration.class
+com/web/taller1/repositories/PropiedadRepository.class
 com/web/taller1/DTO/PagoDTO.class
 com/web/taller1/services/CalificacionService.class
-com/web/taller1/entities/Pago.class
 com/web/taller1/controllers/CalificacionController.class
+com/web/taller1/entities/Pago.class
 com/web/taller1/CorsConfig.class
 com/web/taller1/repositories/ContactRepository.class
 com/web/taller1/services/UsuarioService.class

@@ -1,44 +1,50 @@
 .navbar {
-    background-color: #333;
-    padding: 10px 20px;
-    color: white;
-  
-    .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  
-    .navbar-brand {
-      font-size: 1.5rem;
-      color: #ffca28;
-      text-decoration: none;
-    }
-  
-    .navbar-links {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-    }
-  
-    .navbar-links li {
-      margin-left: 20px;
-    }
-  
-    .navbar-links a {
-      color: white;
-      text-decoration: none;
-      font-size: 1.1rem;
-      transition: color 0.3s ease;
-  
-      &:hover {
-        color: #ffca28;
-      }
-    }
-  
-    .active {
-      border-bottom: 2px solid #ffca28;
-    }
-  }
-  
+  background-color: #ffffff; /* Color de fondo más atractivo */
+  padding: 15px 30px; /* Espaciado ajustado */
+  color: #fa7377;
+  box-shadow: 0 4px 10px #eccacb; /* Sombra para darle profundidad */
+  border-radius: 8px; /* Bordes redondeados */
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  font-size: 1.8rem; /* Tamaño de fuente más grande */
+  color: #FF5A5F,; /* Color rosado para resaltar */
+  text-decoration: none;
+  font-weight: bold; /* Negrita para más énfasis */
+}
+
+.navbar-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar-links li {
+  margin-left: 25px; /* Espaciado entre los enlaces */
+}
+
+.navbar-links a {
+  color: #FF5A5F;
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 10px 15px; /* Espaciado interno para mejorar clicabilidad */
+  border-radius: 4px; /* Bordes redondeados en los enlaces */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+
+.navbar-links a:hover {
+  background-color: #fccdcdd8; /* Fondo amarillo claro al pasar el mouse */
+  color: #FF5A5F; /* Cambio de color al pasar el mouse */
+}
+
+.active {
+  border-bottom: 3px solid #FF5A5F; /* Línea debajo del enlace activo */
+  font-weight: bold; /* Negrita para el enlace activo */
+}
