@@ -19,15 +19,14 @@ export class LoginComponent {
   constructor(private router: Router, private authService: AuthService) {}
 
   login() {
-    console.log("Login method called");
-
-    // Call the authentication API
+    console.log('Login method called');
+  
     this.authService.login(this.email, this.password).subscribe({
-      next: (token: string) => {
-        // Save the JWT token to localStorage or sessionStorage
-        localStorage.setItem('jwtToken', token);
-
-        // Redirect based on the role
+      next: (response: any) => {
+        // Guarda el token JWT en localStorage
+        this.authService.saveToken(response.token);
+  
+        // Redirige según el rol
         if (this.role === 'arrendador') {
           this.router.navigate(['/arrendador']);
         } else {
@@ -35,8 +34,8 @@ export class LoginComponent {
         }
       },
       error: (err) => {
-        console.error('Login failed:', err);
-        alert('Login failed. Please check your credentials.');
+        console.error('Error al iniciar sesión:', err);
+        alert('Error al iniciar sesión. Por favor verifica tus credenciales.');
       }
     });
   }

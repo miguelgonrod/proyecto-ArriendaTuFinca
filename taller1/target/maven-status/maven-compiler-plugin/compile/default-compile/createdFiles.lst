@@ -17,8 +17,8 @@ com/web/taller1/security/SecurityConfig.class
 com/web/taller1/services/SolicitudArrendamientoService.class
 com/web/taller1/entities/Usuario.class
 com/web/taller1/controllers/SolicitudArrendamientoController.class
-com/web/taller1/AppConfiguration.class
 com/web/taller1/repositories/PropiedadRepository.class
+com/web/taller1/AppConfiguration.class
 com/web/taller1/services/AuthService.class
 com/web/taller1/DTO/PagoDTO.class
 com/web/taller1/services/CalificacionService.class
