@@ -1,0 +1,53 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+
+  private apiUrl = 'http://localhost:8080/api/auth';  // URL of the backend endpoint
+  private tokenKey = 'authToken';  // Clave para almacenar el token en localStorage
+
+  constructor(private http: HttpClient) { }
+
+  // Login method to send credentials to the backend
+  login(email: string, password: string): Observable<string> {
+    const loginData = { email, password };
+
+    return this.http.post<string>(this.apiUrl, loginData, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    });
+  }
+
+  register(username: string, email: string, password: string, phone: string, role: 'arrendador' | 'arrendatario'): Observable<string> {
+    const registerData = { username, email, password, phone, role };
+
+    return this.http.post<string>(`${this.apiUrl}/register`, registerData, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    });
+  }
+
+  // Método para guardar el token en el localStorage
+  saveToken(token: string): void {
+    localStorage.setItem(this.tokenKey, token);
+  }
+
+  // Método para obtener el token del localStorage
+  getToken(): string | null {
+    return localStorage.getItem(this.tokenKey);
+  }
+
+  // Verificar si el usuario está autenticado (si el token existe)
+  isAuthenticated(): boolean {
+    const token = this.getToken();
+    // Aquí puedes agregar lógica para verificar si el token es válido, como comprobar su fecha de expiración
+    return token != null;
+  }
+
+  // Método para eliminar el token (cerrar sesión)
+  logout(): void {
+    localStorage.removeItem(this.tokenKey);
+  }
+}

@@ -2,6 +2,8 @@ com/web/taller1/model/Contact.class
 com/web/taller1/repositories/CalificacionRepository.class
 com/web/taller1/repositories/PagoRepository.class
 com/web/taller1/controllers/PagoController.class
+com/web/taller1/controllers/AuthController.class
+com/web/taller1/security/JwtUtil.class
 com/web/taller1/DTO/PropiedadDTO.class
 com/web/taller1/services/PropiedadService.class
 com/web/taller1/WikiApplication.class
@@ -11,11 +13,13 @@ com/web/taller1/controllers/UsuarioController.class
 com/web/taller1/DTO/SolicitudArrendamientoDTO.class
 com/web/taller1/entities/SolicitudArrendamiento.class
 com/web/taller1/repositories/UsuarioRepository.class
+com/web/taller1/security/SecurityConfig.class
 com/web/taller1/services/SolicitudArrendamientoService.class
 com/web/taller1/entities/Usuario.class
 com/web/taller1/controllers/SolicitudArrendamientoController.class
-com/web/taller1/repositories/PropiedadRepository.class
 com/web/taller1/AppConfiguration.class
+com/web/taller1/repositories/PropiedadRepository.class
+com/web/taller1/services/AuthService.class
 com/web/taller1/DTO/PagoDTO.class
 com/web/taller1/services/CalificacionService.class
 com/web/taller1/entities/Pago.class
