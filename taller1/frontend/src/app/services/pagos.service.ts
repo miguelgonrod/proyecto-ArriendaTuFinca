@@ -3,12 +3,13 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';  // Import
 import { Observable, of } from 'rxjs';  // Usamos 'of' para emitir datos simulados
 import { catchError } from 'rxjs/operators';  // Importamos catchError para manejar errores
 import { PagoDTO } from '../models/pago.model';  // Modelo de PagoDTO
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'  // Servicio disponible globalmente
 })
 export class PagoService {
-  private apiUrl = 'http://localhost:8080/api/pagos';  // URL del backend
+  private apiUrl = environment.pagosApiUrl;  // URL del backend
 
   constructor(private http: HttpClient) {}  // Inyectamos HttpClient
 

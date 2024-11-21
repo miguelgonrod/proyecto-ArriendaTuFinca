@@ -3,12 +3,13 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { CalificacionDTO } from '../models/calificacion.model';  // Define este modelo para que coincida con los datos del backend
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CalificacionService {
-  private apiUrl = 'http://localhost:8080/api/calificaciones';  // URL de tu backend
+  private apiUrl = environment.calificacionesApiUrl;  // URL de tu backend
 
   constructor(private http: HttpClient) {}
 

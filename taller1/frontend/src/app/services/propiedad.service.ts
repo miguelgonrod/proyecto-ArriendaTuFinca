@@ -3,12 +3,13 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { PropiedadDTO } from '../models/propiedad.model';  // Modelo del DTO
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PropiedadService {
-  private apiUrl = 'http://localhost:8080/api/propiedades';  // URL del backend
+  private apiUrl = environment.propiedadesApiUrl;  // URL del backend
 
   constructor(private http: HttpClient) {}
 
