@@ -26,10 +26,16 @@ public class SecurityConfig {
         http.csrf().disable()
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/login", "/api/auth/register").permitAll() // Rutas sin autenticación
-                .requestMatchers("/api/usuarios/**").permitAll()
-                .anyRequest().authenticated() // Cualquier otra requiere autenticación
-            );
-            //.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class); // Añade el filtro JWT
+                .requestMatchers("/api/usuarios/**").hasAuthority("arrendador")
+                .requestMatchers("/api/solicitudes/**").hasAuthority("arrendador")
+                .requestMatchers("/api/solicitudes/**").hasAuthority("arrendatario")
+                .requestMatchers("/api/propiedades/**").hasAuthority("arrendador")
+                .requestMatchers("/api/pagos/**").hasAuthority("arrendatario")
+                .requestMatchers("/api/calificaciones/**").hasAuthority("arrendador")
+                .requestMatchers("/api/calificaciones/**").hasAuthority("arrendatario")
+                .anyRequest().authenticated()
+            )
+            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

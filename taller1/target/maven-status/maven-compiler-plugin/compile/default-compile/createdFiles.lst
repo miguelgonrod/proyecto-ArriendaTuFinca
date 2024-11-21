@@ -36,4 +36,5 @@ com/web/taller1/controllers/RouteController.class
 com/web/taller1/services/PagoService.class
 com/web/taller1/entities/Calificacion.class
 com/web/taller1/DTO/UsuarioDTO.class
+com/web/taller1/DTO/RegisterRequest.class
 com/web/taller1/DTO/CalificacionDTO.class

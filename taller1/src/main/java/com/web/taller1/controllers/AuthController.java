@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.web.taller1.DTO.LoginRequest;
 import com.web.taller1.DTO.LoginResponse;
+import com.web.taller1.DTO.RegisterRequest;
 import com.web.taller1.entities.Usuario;
 import com.web.taller1.repositories.UsuarioRepository;
 import com.web.taller1.security.JwtUtil;
@@ -45,9 +46,16 @@ public class AuthController {
 
     
     @PostMapping("/register")
-    public ResponseEntity<Map<String, String>> register(@RequestBody Usuario usuario) {
-        System.out.println("Datos recibidos: " + usuario);
-        String token = authService.registerUsuario(usuario);
+    public ResponseEntity<Map<String, String>> register(@RequestBody RegisterRequest registerRequest) {
+        System.out.println("Datos recibidos: " + registerRequest);
+        
+        // Registrar usuario con el rol especificado
+        String token = authService.registerUsuario(registerRequest.getEmail(), 
+                                                   registerRequest.getPassword(), 
+                                                   registerRequest.getRole(),
+                                                   registerRequest.getUsername(),
+                                                   registerRequest.getTelefono());
+    
         Map<String, String> response = new HashMap<>();
         response.put("token", token);
         return ResponseEntity.ok(response);

@@ -32,6 +32,7 @@
 /home/miguel/Escritorio/proyecto-ArriendaTuFinca/taller1/src/main/java/com/web/taller1/controllers/AuthController.java
 /home/miguel/Escritorio/proyecto-ArriendaTuFinca/taller1/src/main/java/com/web/taller1/DTO/PropiedadDTO.java
 /home/miguel/Escritorio/proyecto-ArriendaTuFinca/taller1/src/main/java/com/web/taller1/repositories/SolicitudArrendamientoRepository.java
+/home/miguel/Escritorio/proyecto-ArriendaTuFinca/taller1/src/main/java/com/web/taller1/DTO/RegisterRequest.java
 /home/miguel/Escritorio/proyecto-ArriendaTuFinca/taller1/src/main/java/com/web/taller1/security/CustomUserDetailsService.java
 /home/miguel/Escritorio/proyecto-ArriendaTuFinca/taller1/src/main/java/com/web/taller1/AppConfiguration.java
 /home/miguel/Escritorio/proyecto-ArriendaTuFinca/taller1/src/main/java/com/web/taller1/repositories/UsuarioRepository.java

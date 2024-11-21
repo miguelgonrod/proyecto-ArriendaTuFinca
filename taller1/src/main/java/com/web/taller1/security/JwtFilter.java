@@ -5,10 +5,14 @@ import io.jsonwebtoken.Jwts;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 
@@ -27,45 +31,48 @@ public class JwtFilter extends OncePerRequestFilter {
 
     @Value("${jwt.secret}")
     private String secretKey;
+    private final JwtUtil jwtUtil;
+    private final UserDetailsService userDetailsService;
     
-    public JwtFilter() {
+    public JwtFilter(JwtUtil jwtUtil, UserDetailsService userDetailsService) {
         System.out.println("JwtFilter inicializado");
+        this.jwtUtil = jwtUtil;
+        this.userDetailsService = userDetailsService;
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
-        System.out.println("Procesando solicitud en JwtFilter");
-
         String authHeader = request.getHeader("Authorization");
 
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             String token = authHeader.substring(7);
+
             try {
-                Claims claims = Jwts.parser()
-                        .setSigningKey(secretKey.getBytes())
-                        .parseClaimsJws(token)
-                        .getBody();
+                // Extraer el nombre de usuario y el rol del token
+                String username = jwtUtil.extractUsername(token);
+                String role = jwtUtil.extractRole(token); // Método para extraer el campo `role`
 
-                System.out.println("Claims extraídos: " + claims);
+                if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                    UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
-                String username = claims.getSubject();
-                String role = claims.get("role", String.class);
+                    // Validar el token
+                    if (jwtUtil.validateToken(token, userDetails)) {
+                        // Convertir el rol a GrantedAuthority
+                        List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(role));
 
-                PreAuthenticatedAuthenticationToken authentication =
-                        new PreAuthenticatedAuthenticationToken(
-                                username,
-                                null,
-                                List.of(new SimpleGrantedAuthority(role))
-                        );
-                SecurityContextHolder.getContext().setAuthentication(authentication);
+                        // Configurar la autenticación en el contexto de seguridad
+                        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                                userDetails, null, authorities);
+                        SecurityContextHolder.getContext().setAuthentication(authentication);
+                    }
+                }
             } catch (Exception e) {
-                System.out.println("Error al procesar el token: " + e.getMessage());
-                SecurityContextHolder.clearContext();
+                System.err.println("Error al validar el token: " + e.getMessage());
             }
         }
 
-        filterChain.doFilter(request, response);
+        chain.doFilter(request, response);
     }
 }
 
