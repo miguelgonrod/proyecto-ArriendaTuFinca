@@ -1,49 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { jwtDecode } from "jwt-decode";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
   private apiUrl = 'http://localhost:8080/api/auth';
-  private tokenKey = 'jwtToken';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
+
+  register(user: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register`, user);
+  }
 
   login(email: string, password: string): Observable<any> {
-    const loginData = { email, password };
-    return this.http.post<{ token: string }>(`${this.apiUrl}/login`, loginData, {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    });
-  }
-  
-  register(username: string, email: string, password: string, phone: string, role: 'arrendador' | 'arrendatario'): Observable<string> {
-    const registerData = { username, email, password, phone, role };
-
-    return this.http.post<string>(`${this.apiUrl}/register`, registerData, {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    });
+    return this.http.post(`${this.apiUrl}/login`, { email, password });
   }
 
   saveToken(token: string): void {
-    localStorage.setItem(this.tokenKey, token);
+    localStorage.setItem('token', token);
   }
 
-  getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
-  }
-
-  // Verificar si el usuario está autenticado (si el token existe)
-  isAuthenticated(): boolean {
-    const token = this.getToken();
-    // Aquí puedes agregar lógica para verificar si el token es válido, como comprobar su fecha de expiración
-    return token != null;
-  }
-
-  // Método para eliminar el token (cerrar sesión)
-  logout(): void {
-    localStorage.removeItem(this.tokenKey);
+  getRoleFromToken(token: string): string {
+    try {
+      const decoded: any = jwtDecode(token); // Decodifica el token
+      return decoded.role; // Retorna el rol del usuario
+    } catch (error) {
+      console.error('Error al decodificar el token:', error);
+      return '';
+    }
   }
 }

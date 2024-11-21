@@ -7,12 +7,6 @@
     <label for="password">Contraseña</label>
     <input type="password" id="password" [(ngModel)]="password" name="password" required />
 
-    <label for="role">Tipo de Usuario</label>
-    <select id="role" [(ngModel)]="role" name="role">
-      <option value="arrendador">Arrendador</option>
-      <option value="arrendatario">Arrendatario</option>
-    </select>
-
     <button type="submit">Iniciar sesión</button>
     <button type="button" (click)="goToSignUp()">Crear usuario</button>
   </form>

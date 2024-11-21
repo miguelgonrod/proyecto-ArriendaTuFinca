@@ -9,6 +9,7 @@ public class UsuarioDTO {
     private String email;
     private String password;
     private String telefono;
+    private String role;
 
     // Constructor vacío (obligatorio para algunos frameworks como JPA)
     public UsuarioDTO() {}
@@ -20,6 +21,7 @@ public class UsuarioDTO {
         this.email = usuario.getEmail();
         this.password = usuario.getPassword();  // Asegúrate de manejar esto con seguridad
         this.telefono = usuario.getTelefono();
+        this.role = usuario.getRole();
     }
 
     // Getters y Setters
@@ -61,5 +63,25 @@ public class UsuarioDTO {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
 }

@@ -27,6 +27,7 @@ public class Usuario {
     private String email;
     private String password;
     private String telefono;
+    private String role;
 
     // Getters y Setters
 
@@ -68,5 +69,25 @@ public class Usuario {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
 }

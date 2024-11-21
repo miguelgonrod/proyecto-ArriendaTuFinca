@@ -15,7 +15,7 @@ import { UsuarioDTO } from '../models/usuario.model';  // Importamos el modelo
 })
 export class UsuariosComponent implements OnInit {
   usuarios: UsuarioDTO[] = [];  // Lista para almacenar los usuarios
-  nuevoUsuario: UsuarioDTO = new UsuarioDTO(0, '', '', '', '');  // Nuevo usuario para el formulario
+  nuevoUsuario: UsuarioDTO = new UsuarioDTO(0, '', '', '', '', 'arrendador');  // Nuevo usuario para el formulario
 
   constructor(private usuarioService: UsuarioService) {}
 
@@ -40,7 +40,7 @@ export class UsuariosComponent implements OnInit {
     this.usuarioService.createUsuario(this.nuevoUsuario).subscribe(
       (data: UsuarioDTO) => {
         this.usuarios.push(data);  // Añadimos el nuevo usuario a la lista
-        this.nuevoUsuario = new UsuarioDTO(0, '', '', '', '');  // Reseteamos el formulario
+        this.nuevoUsuario = new UsuarioDTO(0, '', '', '', '', 'arrendador');  // Reseteamos el formulario
       },
       (error) => {
         console.error('Error al crear usuario:', error);

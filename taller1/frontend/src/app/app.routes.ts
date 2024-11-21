@@ -8,15 +8,16 @@ import { PropiedadesComponent } from './propiedades/propiedades.component';
 import { SolicitudesComponent } from './solicitudes/solicitudes.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
-  { path: 'calificaciones', component: CalificacionesComponent },
+  { path: 'calificaciones', component: CalificacionesComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'pagos', component: PagosComponent },
-  { path: 'propiedades', component: PropiedadesComponent },
-  { path: 'solicitudes', component: SolicitudesComponent },
-  { path: 'usuarios', component: UsuariosComponent },
+  { path: 'pagos', component: PagosComponent, canActivate: [AuthGuard] },
+  { path: 'propiedades', component: PropiedadesComponent, canActivate: [AuthGuard] },
+  { path: 'solicitudes', component: SolicitudesComponent, canActivate: [AuthGuard] },
+  { path: 'usuarios', component: UsuariosComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'login' }
 ];

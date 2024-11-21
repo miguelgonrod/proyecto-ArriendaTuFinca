@@ -1,39 +1,35 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { AuthService } from '../services/auth.service';
+import { UsuarioDTO } from '../models/usuario.model';
 
 
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  providers: [AuthService]
+  imports: [FormsModule, CommonModule],
+  providers: [AuthService],
 })
 export class RegisterComponent {
-  username: string = '';
-  email: string = '';
-  password: string = '';
-  phone: string = '';
-  role: 'arrendador' | 'arrendatario' = 'arrendador';
+  user: UsuarioDTO = new UsuarioDTO(0, '', '', '', '', 'arrendador');
 
   constructor(private authService: AuthService, private router: Router) {}
 
   register() {
-    // Llamar al servicio de registro
-    this.authService.register(this.username, this.email, this.password, this.phone, this.role).subscribe(
-      (token) => {
-        console.log('Usuario registrado y token recibido:', token);
-        // Guardar el token en localStorage
-        localStorage.setItem('authToken', token);
-        // Redirigir al usuario a la página de login
-        this.router.navigate(['/login']);
+    this.authService.register(this.user).subscribe(
+      (response) => {
+        console.log('Usuario registrado con éxito:', response);
+        alert('Registro exitoso, puedes iniciar sesión.');
+        this.router.navigate(['/login']); // Redirige al login después del registro
       },
       (error) => {
         console.error('Error en el registro:', error);
+        alert('Hubo un error al registrar el usuario.');
       }
     );
   }

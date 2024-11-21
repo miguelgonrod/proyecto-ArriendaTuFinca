@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.web.taller1.DTO.LoginRequest;
+import com.web.taller1.DTO.LoginResponse;
 import com.web.taller1.entities.Usuario;
 import com.web.taller1.repositories.UsuarioRepository;
 import com.web.taller1.security.JwtUtil;
@@ -32,21 +34,19 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping("/login")
-        public ResponseEntity<?> login(@RequestBody Usuario usuario) {
-            Optional<Usuario> user = usuarioRepository.findByEmail(usuario.getEmail());
-            if (user.isPresent() && user.get().getPassword().equals(usuario.getPassword())) {
-                String token = jwtUtil.generateToken(user.get().getEmail());
-                Map<String, String> response = new HashMap<>();
-                response.put("token", token);
-                return ResponseEntity.ok(response);
-            } else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales inválidas");
-            }
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
+        try {
+            String token = authService.login(loginRequest.getEmail(), loginRequest.getPassword());
+            return ResponseEntity.ok(new LoginResponse(token));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(401).body(e.getMessage());
         }
+    }
 
     
     @PostMapping("/register")
     public ResponseEntity<Map<String, String>> register(@RequestBody Usuario usuario) {
+        System.out.println("Datos recibidos: " + usuario);
         String token = authService.registerUsuario(usuario);
         Map<String, String> response = new HashMap<>();
         response.put("token", token);
