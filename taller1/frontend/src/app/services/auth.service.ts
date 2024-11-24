@@ -1,3 +1,4 @@
+// src/app/services/auth.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -15,6 +16,7 @@ export class AuthService {
 
   login(email: string, password: string): Observable<any> {
     const loginData = { email, password };
+    console.log('Sending login request with data:', loginData);
     return this.http.post<{ token: string }>(`${this.apiUrl}/login`, loginData, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     });
@@ -22,7 +24,7 @@ export class AuthService {
   
   register(username: string, email: string, password: string, phone: string, role: 'arrendador' | 'arrendatario'): Observable<string> {
     const registerData = { username, email, password, phone, role };
-
+    console.log('Sending register request with data:', registerData);
     return this.http.post<string>(`${this.apiUrl}/register`, registerData, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     });
@@ -36,14 +38,11 @@ export class AuthService {
     return localStorage.getItem(this.tokenKey);
   }
 
-  // Verificar si el usuario está autenticado (si el token existe)
   isAuthenticated(): boolean {
     const token = this.getToken();
-    // Aquí puedes agregar lógica para verificar si el token es válido, como comprobar su fecha de expiración
     return token != null;
   }
 
-  // Método para eliminar el token (cerrar sesión)
   logout(): void {
     localStorage.removeItem(this.tokenKey);
   }

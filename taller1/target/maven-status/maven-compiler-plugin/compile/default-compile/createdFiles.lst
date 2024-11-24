@@ -5,6 +5,7 @@ com/web/taller1/controllers/PagoController.class
 com/web/taller1/controllers/AuthController.class
 com/web/taller1/security/JwtUtil.class
 com/web/taller1/DTO/PropiedadDTO.class
+com/web/taller1/security/JwtAuthenticationFilter.class
 com/web/taller1/services/PropiedadService.class
 com/web/taller1/WikiApplication.class
 com/web/taller1/repositories/SolicitudArrendamientoRepository.class
@@ -22,10 +23,12 @@ com/web/taller1/AppConfiguration.class
 com/web/taller1/services/AuthService.class
 com/web/taller1/DTO/PagoDTO.class
 com/web/taller1/services/CalificacionService.class
+com/web/taller1/AppConfiguration$1.class
 com/web/taller1/entities/Pago.class
 com/web/taller1/controllers/CalificacionController.class
 com/web/taller1/CorsConfig.class
 com/web/taller1/repositories/ContactRepository.class
+com/web/taller1/services/CustomUserDetailsService.class
 com/web/taller1/services/UsuarioService.class
 com/web/taller1/entities/Propiedad.class
 com/web/taller1/controllers/RouteController.class

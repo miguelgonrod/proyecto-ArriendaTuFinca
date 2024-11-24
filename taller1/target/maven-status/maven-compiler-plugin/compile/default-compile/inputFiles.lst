@@ -16,11 +16,13 @@
 /home/alexoberco/Desktop/u/proyecto-ArriendaTuFinca/taller1/src/main/java/com/web/taller1/DTO/CalificacionDTO.java
 /home/alexoberco/Desktop/u/proyecto-ArriendaTuFinca/taller1/src/main/java/com/web/taller1/controllers/SolicitudArrendamientoController.java
 /home/alexoberco/Desktop/u/proyecto-ArriendaTuFinca/taller1/src/main/java/com/web/taller1/repositories/PagoRepository.java
+/home/alexoberco/Desktop/u/proyecto-ArriendaTuFinca/taller1/src/main/java/com/web/taller1/services/CustomUserDetailsService.java
 /home/alexoberco/Desktop/u/proyecto-ArriendaTuFinca/taller1/src/main/java/com/web/taller1/CorsConfig.java
 /home/alexoberco/Desktop/u/proyecto-ArriendaTuFinca/taller1/src/main/java/com/web/taller1/services/PagoService.java
 /home/alexoberco/Desktop/u/proyecto-ArriendaTuFinca/taller1/src/main/java/com/web/taller1/controllers/UsuarioController.java
 /home/alexoberco/Desktop/u/proyecto-ArriendaTuFinca/taller1/src/main/java/com/web/taller1/entities/Calificacion.java
 /home/alexoberco/Desktop/u/proyecto-ArriendaTuFinca/taller1/src/main/java/com/web/taller1/services/AuthService.java
+/home/alexoberco/Desktop/u/proyecto-ArriendaTuFinca/taller1/src/main/java/com/web/taller1/security/JwtAuthenticationFilter.java
 /home/alexoberco/Desktop/u/proyecto-ArriendaTuFinca/taller1/src/main/java/com/web/taller1/WikiApplication.java
 /home/alexoberco/Desktop/u/proyecto-ArriendaTuFinca/taller1/src/main/java/com/web/taller1/DTO/SolicitudArrendamientoDTO.java
 /home/alexoberco/Desktop/u/proyecto-ArriendaTuFinca/taller1/src/main/java/com/web/taller1/services/SolicitudArrendamientoService.java

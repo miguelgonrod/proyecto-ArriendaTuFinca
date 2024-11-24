@@ -1,7 +1,8 @@
+// src/app/login/login.component.ts
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';  // Import the AuthService
-import { FormsModule } from '@angular/forms';  // Importa FormsModule
+import { AuthService } from '../services/auth.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { FormsModule } from '@angular/forms';  // Importa FormsModule
   standalone: true,
   imports: [FormsModule],
   styleUrls: ['./login.component.css'],
-  providers: [AuthService]  // Make sure the AuthService is in the providers
+  providers: [AuthService]
 })
 export class LoginComponent {
   email: string = '';
@@ -20,13 +21,14 @@ export class LoginComponent {
 
   login() {
     console.log('Login method called');
+    console.log('Email:', this.email);
+    console.log('Password:', this.password);
   
     this.authService.login(this.email, this.password).subscribe({
       next: (response: any) => {
-        // Guarda el token JWT en localStorage
+        console.log('Login successful, token received:', response.token);
         this.authService.saveToken(response.token);
   
-        // Redirige según el rol
         if (this.role === 'arrendador') {
           this.router.navigate(['/arrendador']);
         } else {
