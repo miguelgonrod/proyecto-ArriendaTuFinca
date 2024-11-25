@@ -1,0 +1,50 @@
+<div class="mis-propiedades-container">
+  <h2>Mis propiedades</h2>
+
+  <!-- Lista de propiedades -->
+  <div *ngFor="let propiedad of propiedades" class="propiedad">
+    <h3>{{ propiedad.nombre }}</h3>
+    <p><strong>Municipio:</strong> {{ propiedad.municipio }}</p>
+    <p><strong>Dirección:</strong> {{ propiedad.direccion }}</p>
+    <p><strong>Precio:</strong> {{ propiedad.precio | currency }}</p>
+    <p><strong>Máximo de personas:</strong> {{ propiedad.numeroPersonas }}</p>
+    <p><strong>Descripción:</strong> {{ propiedad.descripcion }}</p>
+    <button (click)="editarPropiedad(propiedad)">Editar</button>
+    <button (click)="eliminarPropiedad(propiedad)">Eliminar</button>
+  </div>
+
+  <!-- Modal para editar propiedad -->
+  <div id="editarModal" class="modal" [ngClass]="{'show': propiedadEnEdicion}">
+    <div class="modal-content" *ngIf="propiedadEnEdicion">
+      <span class="close" (click)="cancelarEdicion()">&times;</span>
+      <h3>Editando: {{ propiedadEnEdicion.nombre }}</h3>
+      
+      <label>Nombre:
+        <input [(ngModel)]="propiedadEnEdicion.nombre" placeholder="Nombre de la propiedad" />
+      </label>
+      
+      <label>Municipio:
+        <input [(ngModel)]="propiedadEnEdicion.municipio" placeholder="Municipio" />
+      </label>
+      
+      <label>Dirección:
+        <input [(ngModel)]="propiedadEnEdicion.direccion" placeholder="Dirección" />
+      </label>
+      
+      <label>Precio:
+        <input type="number" [(ngModel)]="propiedadEnEdicion.precio" placeholder="Precio" />
+      </label>
+      
+      <label>Número máximo de personas:
+        <input type="number" [(ngModel)]="propiedadEnEdicion.numeroPersonas" placeholder="Máximo de personas" />
+      </label>
+      
+      <label>Descripción:
+        <textarea [(ngModel)]="propiedadEnEdicion.descripcion" placeholder="Descripción"></textarea>
+      </label>
+      
+      <button (click)="guardarEdicion()">Guardar</button>
+      <button (click)="cancelarEdicion()">Cancelar</button>
+    </div>
+  </div>
+</div>

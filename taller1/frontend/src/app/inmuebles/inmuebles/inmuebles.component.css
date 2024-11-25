@@ -1,0 +1,255 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #ff6b6b;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-right: 2rem;
+    font-weight: 500;
+}
+
+.navbar {
+    background-color: #ffeded;  /* Color rosado claro */
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: flex-end;  /* Alinea el contenido a la derecha */
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pagar-btn {
+    background-color: #ff6b6b;  /* Color del botón */
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+  
+  .pagar-btn:hover {
+    background-color: #ff5252;  /* Color más oscuro al pasar el mouse */
+  }
+
+/* Hero Section Styles */
+.hero-section {
+    background-color: #ffeded;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.hero-section h1 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.hero-section p {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.search-box {
+    display: flex;
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.search-box select,
+.search-box input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.search-btn {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* Property Search Section Styles */
+.property-search-section {
+    padding: 3rem 2rem;
+    background-color: white;
+}
+
+.property-search-section h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.search-criteria {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #444;
+}
+
+.search-input-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.search-input-group input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.search-input-group button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #ff6b6b;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .search-box {
+        flex-direction: column;
+    }
+
+    .radio-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .search-input-group {
+        flex-direction: column;
+    }
+}
+
+#table-container{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#tabla-mascotas-header{
+    width: 75vw;
+    border-collapse: collapse;
+}
+
+#tabla-propiedades-body{
+    width: 75vw;
+    border-collapse: collapse;
+}
+
+.row-0-h{
+    width: 20%;
+    background-color: #ffeded;
+    color: #ff6b6b;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.row-1-h{
+    width: 50%;
+    background-color: #ffeded;
+    color: #ff6b6b;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    
+}
+
+.row-2-h{
+    width: 15%;
+    background-color: #ffeded;
+    color: #ff6b6b;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.row-3-h{
+    width: 15%;
+    background-color: #ffeded;
+    color: #ff6b6b;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.row-0-v{
+    width: 20%;
+    height: 6vh;
+    padding: 1em;
+    border-left: 1px solid #ff6b6b;
+    border-right: 1px solid #ff6b6b;
+    border-bottom: 0;
+}
+.row-1-v{
+    width: 50%;
+    height: 6vh;
+    padding: 1em;
+    border-right: 1px solid #ff6b6b;
+    border-bottom: 0;
+}
+.row-2-v{
+    width: 15%;
+    height: 6vh;
+    padding: 1em;
+    border-right: 1px solid #ff6b6b;
+    border-bottom: 0;
+}
+.row-3-v{
+    width: 15%;
+    height: 6vh;
+    padding: 1em;
+    border-right: 1px solid #ff6b6b;
+    border-bottom: 0;
+}

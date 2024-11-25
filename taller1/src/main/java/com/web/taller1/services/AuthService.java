@@ -42,7 +42,7 @@ public class AuthService {
         Usuario savedUsuario = usuarioRepository.save(usuario);
     
         // Generar el JWT
-        return jwtUtil.generateToken(savedUsuario.getEmail(), savedUsuario.getRole());
+        return jwtUtil.generateToken(savedUsuario.getEmail(), savedUsuario.getRole(), savedUsuario.getId());
     }
 
     public String login(String email, String password) {
@@ -54,7 +54,7 @@ public class AuthService {
             // Validar contraseña
             if (passwordEncoder.matches(password, usuario.getPassword())) {
                 // Generar JWT
-                return jwtUtil.generateToken(usuario.getEmail(), usuario.getRole());
+                return jwtUtil.generateToken(usuario.getEmail(), usuario.getRole(), usuario.getId());
             } else {
                 throw new IllegalArgumentException("Contraseña incorrecta");
             }

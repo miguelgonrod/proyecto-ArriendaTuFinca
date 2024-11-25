@@ -1,0 +1,28 @@
+<div class="crear-propiedad-container">
+    <h2>Crear nueva propiedad</h2>
+    <form (ngSubmit)="crearPropiedad()">
+      <label for="nombre">Nombre de la propiedad</label>
+      <input type="text" id="nombre" [(ngModel)]="nombre" name="nombre" required />
+
+      <label for="maxPersonas">Numero de personas</label>
+      <input type="number" id="maxPersonas" [(ngModel)]="maxPersonas" name="maxPersonas" required />
+
+      <label for="nombre">Ciudad</label>
+      <input type="text" id="ciudad" [(ngModel)]="ciudad" name="ciudad" required />
+  
+      <label for="direccion">Dirección</label>
+      <input type="text" id="direccion" [(ngModel)]="direccion" name="direccion" required />
+
+      <label for="numContacto">Numero de contacto</label>
+      <input type="text" id="numContacto" [(ngModel)]="numContacto" name="numContacto" required />
+  
+      <label for="precio">Precio</label>
+      <input type="number" id="precio" [(ngModel)]="precio" name="precio" required />
+  
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" [(ngModel)]="descripcion" name="descripcion"></textarea>
+  
+      <button type="submit">Guardar propiedad</button>
+    </form>
+  </div>
+  

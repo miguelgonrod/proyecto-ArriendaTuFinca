@@ -29,6 +29,7 @@ public class Propiedad {
     private String municipio;
     private Integer numeroPersonas;
     private String estado;
+    private String nombre;
 
     // Relación con Usuario (propietario de la propiedad)
     @ManyToOne
@@ -98,5 +99,13 @@ public class Propiedad {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }

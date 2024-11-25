@@ -1,0 +1,29 @@
+<div class="arrendador-container">
+  <!-- Título principal -->
+  <h1>Bienvenido a tu panel de control</h1>
+  <p class="subtitulo">Aquí puedes administrar tus propiedades y solicitudes pendientes</p>
+
+  <!-- Panel de control -->
+  <div class="panel-container">
+    <!-- Crear propiedad -->
+    <div class="panel-item">
+      <h2>Crear propiedad</h2>
+      <p class="subtitulo">Agrega una nueva propiedad</p>
+      <button (click)="goToCrearPropiedad()">Crear propiedad</button>
+    </div>
+
+    <!-- Solicitudes pendientes -->
+    <div class="panel-item">
+      <h2>Solicitudes pendientes</h2>
+      <p class="subtitulo">Revisa y gestiona tus solicitudes de arriendo</p>
+      <button (click)="goToSolicitudes()">Solicitudes pendientes</button>
+    </div>
+
+    <!-- Mis propiedades -->
+    <div class="panel-item">
+      <h2>Mis propiedades</h2>
+      <p class="subtitulo">Consulta y edita tus propiedades activas</p>
+      <button (click)="goToMisPropiedades()">Mis propiedades</button>
+    </div>
+  </div>
+</div>

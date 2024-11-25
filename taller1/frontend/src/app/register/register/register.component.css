@@ -1,0 +1,60 @@
+.register-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px #f9a4a4ab;
+}
+
+.register-container h1 {
+  color: #ff5a60c0;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.register-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-container label {
+  display: block;
+  font-size: 16px;
+  color: #484848;
+  margin-bottom: 0.5rem;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="tel"],
+select {
+  width: 92%;
+  padding: 0.75rem;
+  font-size: 14px;
+  margin-bottom: 1.25rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #484848;
+  background-color: #f7f7f7;
+  transition: border-color 0.3s;
+}
+
+.register-container button {
+  padding: 15px; /* Hacemos el botón más grande */
+  margin-bottom: 15px;
+  border: 2px solid #ff5a5f; /* Borde rosado de Airbnb */
+  border-radius: 4px;
+  font-size: 16px; /* Aumentamos el tamaño del texto */
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #ff5a5f;
+  color: #fff; /* Texto rosado */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.register-container button:hover {
+  background-color: #ff5a60d9; /* Fondo rosado al pasar el cursor */
+  color: #fff; /* Cambiamos el texto a blanco en hover */
+}

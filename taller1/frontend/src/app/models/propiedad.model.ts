@@ -1,5 +1,6 @@
 export class PropiedadDTO {
     id: number;
+    nombre: string;
     direccion: string;
     descripcion: string;
     precio: number;
@@ -10,6 +11,7 @@ export class PropiedadDTO {
   
     constructor(
       id: number,
+      nombre: string,
       direccion: string,
       descripcion: string,
       precio: number,
@@ -19,6 +21,7 @@ export class PropiedadDTO {
       usuarioId: number
     ) {
       this.id = id;
+      this.nombre = nombre;
       this.direccion = direccion;
       this.descripcion = descripcion;
       this.precio = precio;

@@ -1,0 +1,18 @@
+<div class="solicitudes-container">
+  <h2>Solicitudes de arrendamiento</h2>
+  <div *ngFor="let solicitud of solicitudes" class="solicitud">
+    <h3>{{ solicitud.propiedad }}</h3>
+    <p><strong>Solicitante:</strong> {{ solicitud.solicitante }}</p>
+    <p><strong>Cédula:</strong> {{ solicitud.cedula }}</p>
+    <p><strong>Teléfono:</strong> {{ solicitud.telefono }}</p>
+    <p><strong>Mensaje:</strong> {{ solicitud.mensaje }}</p>
+    <p><strong>Fecha de reserva:</strong> {{ solicitud.fechaReserva | date: 'dd/MM/yyyy' }}</p>
+    <p><strong>Fecha de ingreso:</strong> {{ solicitud.fechaIngreso | date: 'dd/MM/yyyy' }}</p>
+    <p><strong>Fecha de salida:</strong> {{ solicitud.fechaSalida | date: 'dd/MM/yyyy' }}</p>
+    <button (click)="aprobarSolicitud(solicitud)">Aprobar</button>
+    <button (click)="rechazarSolicitud(solicitud)">Rechazar</button>
+  </div>
+</div>
+
+
+  

@@ -1,24 +1,18 @@
 package com.web.taller1.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import java.util.List;
-import com.web.taller1.services.PropiedadService;
+import org.springframework.web.bind.annotation.*;
+
 import com.web.taller1.DTO.PropiedadDTO;
-
-
+import com.web.taller1.services.PropiedadService;
 
 @RestController
 @RequestMapping("/api/propiedades")
+@CrossOrigin(origins = "http://localhost:4200")
 public class PropiedadController {
 
     @Autowired
@@ -48,9 +42,28 @@ public class PropiedadController {
         return new ResponseEntity<>(propiedadActualizada, HttpStatus.OK);
     }
 
+    @GetMapping("/usuario/{usuarioId}")
+    public ResponseEntity<List<PropiedadDTO>> getPropiedadesByUsuarioId(@PathVariable Long usuarioId) {
+        List<PropiedadDTO> propiedades = propiedadService.getPropiedadesByUsuarioId(usuarioId);
+        return new ResponseEntity<>(propiedades, HttpStatus.OK);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePropiedad(@PathVariable Long id) {
         propiedadService.deletePropiedad(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    // PropiedadController.java
+    @GetMapping("/buscar")
+    public ResponseEntity<List<PropiedadDTO>> buscarPropiedades(
+        @RequestParam(required = false) String nombre,
+        @RequestParam(required = false) String municipio,
+        @RequestParam(required = false) Integer numeroPersonas
+    ) {
+        List<PropiedadDTO> propiedades = propiedadService.buscarPropiedades(nombre, municipio, numeroPersonas);
+        return new ResponseEntity<>(propiedades, HttpStatus.OK);
+    }
+
+    
 }

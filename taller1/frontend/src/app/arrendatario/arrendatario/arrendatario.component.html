@@ -1,0 +1,41 @@
+<div class="main-container">
+  <section class="hero-section">
+    <h1>Encuentra la propiedad de tus sueños</h1>
+
+    <div class="search-criteria">
+      <form [formGroup]="searchForm">
+        <div class="radio-group">
+          <label>
+            <input type="radio" formControlName="searchType" name="searchType" value="nombre">
+            Por Nombre
+          </label>
+          
+          <label>
+            <input type="radio" formControlName="searchType" name="searchType" value="municipio">
+            Por Municipio
+          </label>
+        </div>
+        
+        <div class="search-input-group">
+          <input type="text" formControlName="searchText" placeholder="Ingrese su búsqueda...">
+          <button type="button" (click)="navigateToInmuebles('text')">Buscar</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="property-search-section">
+    <h2>Búsqueda Avanzada por Maximo de Personas</h2>
+
+    <div class="search-box">
+      <form [formGroup]="searchForm">
+        <input type="number" formControlName="numeroPersonas" placeholder="Número de Personas" min="1" max="100">
+        <button class="search-btn" type="button" (click)="navigateToInmuebles('number')">Buscar</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Tu Plataforma de Propiedades</p>
+  </footer>
+</div>

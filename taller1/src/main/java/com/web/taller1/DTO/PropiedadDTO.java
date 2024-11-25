@@ -12,6 +12,8 @@ public class PropiedadDTO {
     private Integer numeroPersonas;
     private String estado;
     private Long usuarioId;  // FK hacia Usuario
+    private String nombre;  // Agregar propiedad nombre
+
 
     // Constructor vacío (necesario para frameworks como JPA)
     public PropiedadDTO() {}
@@ -25,6 +27,9 @@ public class PropiedadDTO {
         this.municipio = propiedad.getMunicipio();
         this.numeroPersonas = propiedad.getNumeroPersonas();
         this.estado = propiedad.getEstado();
+        this.nombre = propiedad.getNombre();  // Asignar propiedad nombre
+
+
 
         // Asegúrate de que la relación no sea nula antes de acceder a ella
         if (propiedad.getUsuario() != null) {
@@ -96,5 +101,12 @@ public class PropiedadDTO {
     public void setUsuarioId(Long usuarioId) {
         this.usuarioId = usuarioId;
     }
-}
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+}

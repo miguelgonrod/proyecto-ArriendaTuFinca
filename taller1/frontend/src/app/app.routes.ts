@@ -1,29 +1,24 @@
-import { NgModule } from '@angular/core';
 import { Routes } from '@angular/router';
-import { RouterModule } from '@angular/router';  // Ensure correct import
-import { CalificacionesComponent } from './calificaciones/calificaciones.component';
-import { PagosComponent } from './pagos/pagos.component';
-import { LoginComponent } from './login/login.component';
-import { PropiedadesComponent } from './propiedades/propiedades.component';
-import { SolicitudesComponent } from './solicitudes/solicitudes.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
-import { RegisterComponent } from './register/register.component';
-import { AuthGuard } from './auth.guard';
+import { LoginComponent } from './login/login/login.component';
+import { RegisterComponent } from './register/register/register.component';
+import { ArrendadorComponent } from './arrendador/arrendador/arrendador.component';
+import { CrearPropiedadComponent } from './crear-propiedad/crear-propiedad/crear-propiedad.component';
+import { SolicitudesComponent } from './solicitudes/solicitudes/solicitudes.component';
+import { MisPropiedadesComponent } from './mis-propiedades/mis-propiedades/mis-propiedades.component';
+import { ArrendatarioComponent } from './arrendatario/arrendatario/arrendatario.component';
+import { InmueblesComponent } from './inmuebles/inmuebles/inmuebles.component';
+import { PagoComponent } from './pago/pago/pago.component';
 
 export const routes: Routes = [
-  { path: 'calificaciones', component: CalificacionesComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'pagos', component: PagosComponent, canActivate: [AuthGuard] },
-  { path: 'propiedades', component: PropiedadesComponent, canActivate: [AuthGuard] },
-  { path: 'solicitudes', component: SolicitudesComponent, canActivate: [AuthGuard] },
-  { path: 'usuarios', component: UsuariosComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: '**', redirectTo: 'login' }
+  { path: 'arrendador', component: ArrendadorComponent },
+  { path: 'crear-propiedad', component: CrearPropiedadComponent },
+  { path: 'solicitudes', component: SolicitudesComponent },
+  { path: 'mis-propiedades', component: MisPropiedadesComponent },
+  { path: 'arrendatario', component: ArrendatarioComponent},
+  { path: 'inmuebles', component: InmueblesComponent},
+  { path: 'inmuebles', component: InmueblesComponent},
+  { path: 'pago', component: PagoComponent },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }

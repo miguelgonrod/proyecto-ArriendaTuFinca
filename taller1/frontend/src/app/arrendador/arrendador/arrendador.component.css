@@ -1,0 +1,79 @@
+/* Estilos para el contenedor principal */
+.arrendador-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  max-width: 1200px; /* Aumenta el ancho del contenedor principal para que los tres paneles quepan */
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px #f9a4a4ab;
+}
+
+/* Título principal */
+.arrendador-container h1 {
+  font-size: 2.5em;
+  color: #ff5a60c0; 
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Subtítulo */
+.subtitulo {
+  font-size: 1.2em;
+  color: #888;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Panel de control */
+.panel-container {
+  display: flex;
+  justify-content: space-between; /* Distribuye los contenedores en una sola línea */
+  width: 100%;
+  gap: 20px; /* Espacio entre los contenedores */
+  margin-bottom: 30px; /* Espacio debajo de los paneles */
+}
+
+/* Cada panel individual (crear propiedad, solicitudes, mis propiedades) */
+.panel-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 32%; /* Asegura que los tres paneles se acomoden en la misma línea */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.panel-item h2 {
+  font-size: 1.8em;
+  color: #ff5a6087;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.panel-item .subtitulo {
+  font-size: 1em;
+  color: #555;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Botones */
+.panel-item button {
+  background-color: #ff5a5f; /* Rosado de Airbnb */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.panel-item button:hover {
+  background-color: #ff3b40; /* Un tono más oscuro de rosado */
+}

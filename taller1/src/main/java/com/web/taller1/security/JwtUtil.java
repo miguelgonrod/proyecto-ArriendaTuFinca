@@ -16,10 +16,11 @@ public class JwtUtil {
     private String SECRET_KEY;
     private final long expiration = 86400000;
 
-    public String generateToken(String email, String role) {
+    public String generateToken(String email, String role, long userId) {
         return Jwts.builder()
                 .setSubject(email)
-                .claim("role", role) // Incluir rol en el token
+                .claim("userId", userId)
+                .claim("role", role) // Incluir rol en el toke
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + expiration)) // 10 horas
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY)

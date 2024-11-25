@@ -43,7 +43,7 @@ public class UsuarioService {
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado con email: " + email));
 
         if (passwordEncoder.matches(password, usuario.getPassword())) {
-            return jwtUtil.generateToken(usuario.getEmail(), usuario.getRole()); // Incluye rol en el token
+            return jwtUtil.generateToken(usuario.getEmail(), usuario.getRole(), usuario.getId()); // Incluye rol en el token
         } else {
             throw new RuntimeException("Contraseña incorrecta");
         }

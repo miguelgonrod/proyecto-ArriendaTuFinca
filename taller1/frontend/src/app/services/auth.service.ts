@@ -27,10 +27,34 @@ export class AuthService {
   getRoleFromToken(token: string): string {
     try {
       const decoded: any = jwtDecode(token); // Decodifica el token
+      console.log('Token decodificado role:', decoded.userId);
       return decoded.role; // Retorna el rol del usuario
     } catch (error) {
       console.error('Error al decodificar el token:', error);
       return '';
     }
   }
+
+  getCurrentUserId(): number | null {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.error('No hay token disponible');
+      return null;
+    }
+    try {
+      const decoded: any = jwtDecode(token); // Decodifica el token
+      console.log('Token decodificado id:', decoded.userId);
+      
+
+      // Asegúrate de que el campo coincide con tu token (puede ser 'id', 'userId' o 'sub')
+      const userId = decoded.userId || decoded.sub || decoded.id;
+      console.log('User ID extraído del token:', userId);
+
+      return userId ? Number(userId) : null;
+    } catch (error) {
+      console.error('Error al decodificar el token:', error);
+      return null;
+    }
+  }
+  
 }

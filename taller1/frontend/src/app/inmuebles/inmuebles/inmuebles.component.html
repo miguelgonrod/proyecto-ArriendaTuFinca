@@ -1,0 +1,38 @@
+<div class="main-container">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <button class="pagar-btn" routerLink="/pago">Pagar</button>
+    </nav>
+    <div id="table-container">
+      <div class="contenedor-tabla">
+        <table id="tabla-mascotas-header" class="tabla-propiedades">
+          <thead>
+            <tr>
+              <th class="row-0-h">Nombre</th>
+              <th class="row-1-h">Direccion</th>
+              <th class="row-2-h">Precio</th>
+              <th class="row-3-h">Estado</th>
+              <th class="row-4-h">municipio</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="contenedor-tabla">
+        <ng-container *ngFor="let propiedad of propiedadesFiltradas">
+          <table id="tabla-propiedades-body" class="tabla-propiedades">
+            <ng-container *ngIf="propiedad">
+              <tbody>
+                <tr>
+                  <td class="row-0-v">{{propiedad.nombre}}</td>
+                  <td class="row-1-v">{{propiedad.direccion}}</td>
+                  <td class="row-2-v">{{propiedad.precio}}</td>
+                  <td class="row-3-v">{{propiedad.estado}}</td>
+                  <td class="row-4-v">{{propiedad.municipio}}</td>
+                </tr>
+              </tbody>
+            </ng-container>
+          </table>
+        </ng-container>
+      </div>
+    </div>
+  </div>

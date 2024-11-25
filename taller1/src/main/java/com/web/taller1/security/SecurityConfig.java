@@ -29,7 +29,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/usuarios/**").hasAuthority("arrendador")
                 .requestMatchers("/api/solicitudes/**").hasAuthority("arrendador")
                 .requestMatchers("/api/solicitudes/**").hasAuthority("arrendatario")
-                .requestMatchers("/api/propiedades/**").hasAuthority("arrendador")
+                .requestMatchers("/api/propiedades/**").hasAnyAuthority("arrendador", "arrendatario")
                 .requestMatchers("/api/pagos/**").hasAuthority("arrendatario")
                 .requestMatchers("/api/calificaciones/**").hasAuthority("arrendador")
                 .requestMatchers("/api/calificaciones/**").hasAuthority("arrendatario")
@@ -50,7 +50,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(); // Para encriptar contraseñas
     }
 }

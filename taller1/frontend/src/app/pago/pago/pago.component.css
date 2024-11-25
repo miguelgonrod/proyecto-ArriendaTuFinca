@@ -1,0 +1,65 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  #contenedor-pago {
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
+  }
+
+  #caja-pago {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  #monto-boton {
+    padding: 25px;
+    background: linear-gradient(to right, #edb8b8, #e94f4a);
+    color: white;
+  }
+
+  #monto-title {
+    margin: 0 0 15px 0;
+    font-size: 28px;
+    font-weight: 600;
+  }
+
+  #button-pagar {
+    background: white;
+    color: #ff6b6b;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: transform 0.2s ease;
+  }
+
+  #button-pagar:hover {
+    transform: translateY(-2px);
+  }
+
+  #descripcion {
+    padding: 25px;
+    background: white;
+  }
+
+  #descripcion-p {
+    margin: 0;
+    line-height: 1.6;
+    color: #333;
+  }
+
+#descripcion-p strong {
+  color: #ff6b6b;
+}

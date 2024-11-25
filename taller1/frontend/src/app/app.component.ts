@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from "./navbar/navbar.component";
-import { Router, RouterModule } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
+  imports: [RouterOutlet, HttpClientModule, FormsModule, CommonModule],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  imports: [NavbarComponent, RouterModule, HttpClientModule, FormsModule]
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'frontend';
+  title = 'front';
 }
