@@ -27,8 +27,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/login", "/api/auth/register").permitAll() // Rutas sin autenticación
                 .requestMatchers("/api/usuarios/**").hasAuthority("arrendador")
-                .requestMatchers("/api/solicitudes/**").hasAuthority("arrendador")
-                .requestMatchers("/api/solicitudes/**").hasAuthority("arrendatario")
+                .requestMatchers("/api/solicitudes/**").hasAnyAuthority("arrendador", "arrendatario")
                 .requestMatchers("/api/propiedades/**").hasAnyAuthority("arrendador", "arrendatario")
                 .requestMatchers("/api/pagos/**").hasAuthority("arrendatario")
                 .requestMatchers("/api/calificaciones/**").hasAuthority("arrendador")

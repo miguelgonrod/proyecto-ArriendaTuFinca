@@ -1,14 +1,14 @@
 <div class="main-container">
     <div id="contenedor-pago">
-        <div id="caja-pago">
-            <div id="monto-boton">
-                <h2 id="monto-title">Pago</h2>
-                <p><strong>Monto:</strong> {{monto}}</p>
-                <button id="button-pagar">Pagar</button>
-            </div>
-            <div id="descripcion">
-                <p id="descripcion-p"><strong style="font-size: larger;">Descripción</strong> <br> <br> {{descripcion}}</p>
-            </div>
+      <div id="caja-pago">
+        <div id="monto-boton">
+          <h2 id="monto-title">Pago</h2>
+          <p><strong>Monto:</strong> {{monto}}</p>
+          <button id="button-pagar" (click)="pagar()">Pagar</button>
         </div>
-    </div>
-</div>
+        <div id="descripcion">
+          <p id="descripcion-p"><strong style="font-size: larger;">Descripción</strong> <br> <br> {{descripcion}}</p>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PropiedadDTO } from '../../models/propiedad.model';
 import { PropiedadService } from '../../services/propiedad.service';
 import { RouterModule } from '@angular/router';
@@ -10,12 +10,12 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './inmuebles.component.html',
-  styleUrl: './inmuebles.component.css'
+  styleUrls: ['./inmuebles.component.css']
 })
 export class InmueblesComponent implements OnInit {
   propiedadesFiltradas: PropiedadDTO[] = [];
 
-  constructor(private route: ActivatedRoute, private propiedadService: PropiedadService) {}
+  constructor(private route: ActivatedRoute, private propiedadService: PropiedadService, private router: Router) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe((params: { [x: string]: any; }) => {
@@ -51,8 +51,19 @@ export class InmueblesComponent implements OnInit {
           }
         );
       } else {
-        this.propiedadesFiltradas = [];
-      }
-    });
-  }
+        this.propiedadService.getPropiedades().subscribe(
+          (propiedades: PropiedadDTO[]) => {
+            this.propiedadesFiltradas = propiedades;
+          },
+          (error: any) => {
+            console.error('Error al obtener todas las propiedades:', error);
+          }
+        );
+      }
+    });
+  }
+
+  navigateToPago(propiedad: PropiedadDTO) {
+    this.router.navigate(['/pago'], { queryParams: { nombre: propiedad.nombre, monto: propiedad.precio, descripcion: propiedad.descripcion } });
+  }
 }

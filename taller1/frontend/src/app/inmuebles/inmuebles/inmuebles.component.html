@@ -12,14 +12,14 @@
               <th class="row-1-h">Direccion</th>
               <th class="row-2-h">Precio</th>
               <th class="row-3-h">Estado</th>
-              <th class="row-4-h">municipio</th>
+              <th class="row-4-h">Municipio</th>
             </tr>
           </thead>
         </table>
       </div>
       <div class="contenedor-tabla">
         <ng-container *ngFor="let propiedad of propiedadesFiltradas">
-          <table id="tabla-propiedades-body" class="tabla-propiedades">
+          <table id="tabla-propiedades-body" class="tabla-propiedades" (click)="navigateToPago(propiedad)">
             <ng-container *ngIf="propiedad">
               <tbody>
                 <tr>
@@ -34,5 +34,5 @@
           </table>
         </ng-container>
       </div>
-    </div>
-  </div>
+    </div>
+  </div>
